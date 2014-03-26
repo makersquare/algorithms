@@ -9,12 +9,7 @@ module ArrayUtil
       return nil
     elsif array.length == 1
       return array[0]
-    #elsif array.length == 2
-     # if array[1] > array[0]
-      #  return array[1]
-     # else
-     #   return array[0]
-     #end
+
     else
       array.each do |num|
         if num >= test
@@ -22,7 +17,6 @@ module ArrayUtil
         end
       end
     return test
-
 
     end
   end
@@ -40,8 +34,6 @@ module ArrayUtil
     end
 
     return test
-
-
   end
 
   def self.sum_arrays(array1, array2)
