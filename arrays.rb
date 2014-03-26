@@ -25,10 +25,16 @@ module ArrayUtil
   end
 
   def self.sum_arrays(array1, array2)
+    @new_array = Array.new(0)
     if array1 == [] && array2 == []
       return []
-    else # array1.length == 1 && array1.length == 1
+    elsif array1.length == 1 && array2.length == 1
       return [array1[0] + array2[0]]
+    else
+      array2.each_index do |index|
+      @new_array[index] = array1[index] + array2[index]
+      end
+      @new_array
     end
   end
 end
