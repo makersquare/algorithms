@@ -3,7 +3,7 @@ require 'pry-debugger'
 
 module ArrayUtil
   def self.max(array)
-    @tester = array[0]
+    test = array[0]
 
     if array.length == 0
       return nil
@@ -17,22 +17,41 @@ module ArrayUtil
      #end
     else
       array.each do |num|
-        if num >= @tester
-          @tester = num
+        if num >= test
+          test = num
         end
       end
-      return @tester
+    return test
 
 
     end
   end
 
   def self.middle_element(array)
+    return nil if array.size == 0
 
+      halfarraysize = array.size / 2
+
+    if array.size % 2 == 1
+      return array[halfarraysize.floor]
+    else
+      return (array[halfarraysize] + array[halfarraysize - 1])/2.0
+      end
+    end
+
+    return test
 
 
   end
 
   def self.sum_arrays(array1, array2)
+    temp_array = []
+
+    for i in 0..(array1.size - 1)
+      temp_array.push(array1[i] + array2[i])
+    end
+    temp_array
+  end
+
   end
 end
