@@ -1,0 +1,23 @@
+body {
+  color: #111;
+  background: #fff;
+  font-family: "Garamond", "Baskerville", Georgia, serif;
+
+  font-size: 18px;
+  line-height: 1.5em;
+  padding: 0;
+  margin: 0;
+}
+
+#structure {
+  margin-left: auto;
+  margin-right: auto;
+  width: 600px;
+}
+
+.textarea {
+  width: 300px;
+  height: 300px;
+  font-family: "Garamond", "Baskerville", Georgia, serif;
+  font-size: 18px;
+}
