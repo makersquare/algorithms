@@ -3,10 +3,6 @@ require 'rubygems'
 
 module ArrayUtil
   def self.max(array)
-    # return nil if array.size == 0
-
-    # return array[0] if array.size == 1
-
     maximum = array[0]
     array.each_index do |x|
       if array[x] > maximum
@@ -18,10 +14,12 @@ module ArrayUtil
   end
 
   def self.middle_element(array)
+  	return nil if array.size ==0
+
     if array.size % 2 == 1
       return array[array.size/2]
     else
-      return (array[array.size/2]+ array[array.size/2-1] ) /2
+      return (array[array.size/2].to_f+ array[array.size/2-1] ) /2
     end
 
   end
