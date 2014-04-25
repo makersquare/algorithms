@@ -9,5 +9,6 @@ module ArrayUtil
   end
 
   def self.sum_arrays(array1, array2)
+    array1.zip(array2).map { |x| x.inject(:+)}
   end
 end
