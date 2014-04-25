@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'rspec'
-require 'pry-debugger'
+# require 'pry-debugger'
 require_relative '../arrays.rb'
 
 describe "ArrayUtil" do
