@@ -5,33 +5,33 @@ require_relative '../arrays.rb'
 
 describe "ArrayUtil" do
   describe ".max" do
-    xit "should return nil for an empty array" do
+    it "should return nil for an empty array" do
       expect(ArrayUtil.max([])).to eq(nil)
     end
 
-    xit "should return the only element if the array has 1 element" do
+    it "should return the only element if the array has 1 element" do
       expect(ArrayUtil.max([-1])).to eq(-1)
       expect(ArrayUtil.max([0])).to eq(0)
       expect(ArrayUtil.max([1])).to eq(1)
     end
 
-    xit "should return the larger element if the array has 2 elements" do
+    it "should return the larger element if the array has 2 elements" do
       expect(ArrayUtil.max([-1, 1])).to eq(1)
       expect(ArrayUtil.max([0, -10])).to eq(0)
       expect(ArrayUtil.max([1, 10])).to eq(10)
     end
 
-    xit "should find the largest number in a large array" do
+    it "should find the largest number in a large array" do
       expect(ArrayUtil.max([100, 50, 200, 73, 4.2, 80])).to eq(200)
     end
 
-    xit "should not break when you have duplicates" do
+    it "should not break when you have duplicates" do
       expect(ArrayUtil.max([10, 10])).to eq(10)
       expect(ArrayUtil.max([1, 10, 10])).to eq(10)
       expect(ArrayUtil.max([10, 10, 20])).to eq(20)
     end
 
-    xit "should not break when you have negative numbers" do
+    it "should not break when you have negative numbers" do
       expect(ArrayUtil.max([-1, -5, -10, -2])).to eq(-1)
     end
   end

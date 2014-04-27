@@ -3,6 +3,13 @@ require 'pry-debugger'
 
 module ArrayUtil
   def self.max(array)
+    if array.length == 0
+      nil
+    elsif array.length == 1
+      return array[0]
+    elsif array.length > 1
+      array.sort[-1]
+    end
   end
 
   def self.middle_element(array)
