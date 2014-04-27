@@ -6,13 +6,12 @@ module ArrayUtil
   end
 
   def self.middle_element(array)
-    # if array.length = []
-    #   return nil
-    if array.length % 2 != 0
+    if array.length  == 0
+      nil
+    elsif array.length % 2 != 0
       mid = array.length / 2 + 0.5
       return array[mid]
-    end
-    if array.length % 2 == 0
+    elsif array.length % 2 == 0
       mid1 = array.length / 2
       average = (array[mid1] + array[mid1 - 1]) / 2.0
         if average % 2 == 0

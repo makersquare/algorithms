@@ -37,11 +37,11 @@ describe "ArrayUtil" do
   end
 
   describe ".middle_element" do
-    xit "should return nil for an empty array" do
+    it "should return nil for an empty array" do
       expect(ArrayUtil.middle_element([])).to eq(nil)
     end
 
-    xit "should return the only element for array of size 1" do
+    it "should return the only element for array of size 1" do
       expect(ArrayUtil.middle_element([1])).to eq(1)
     end
 
