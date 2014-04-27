@@ -21,7 +21,7 @@ describe "ArrayUtil" do
       expect(ArrayUtil.max([1, 10])).to eq(10)
     end
 
-    it "should find the largest number in a large array" do
+    xit "should find the largest number in a large array" do
       expect(ArrayUtil.max([100, 50, 200, 73, 4.2, 80])).to eq(200)
     end
 
@@ -56,13 +56,13 @@ describe "ArrayUtil" do
       expect(ArrayUtil.middle_element([1, 3, 5, 7, 9, 11])).to eq(6)
     end
 
-    xit "should return floats when the middle elements average to a decimal" do
+    it "should return floats when the middle elements average to a decimal" do
       expect(ArrayUtil.middle_element([1, 2, 3, 4])).to eq(2.5)
     end
   end
 
   describe ".sum_arrays" do
-    xit "should return an empty array if the inputs are empty" do
+    it "should return an empty array if the inputs are empty" do
       expect(ArrayUtil.sum_arrays([], [])).to eq([])
     end
 

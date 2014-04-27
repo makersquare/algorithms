@@ -6,9 +6,30 @@ module ArrayUtil
   end
 
   def self.middle_element(array)
+    # if array.length = []
+    #   return nil
+    if array.length % 2 != 0
+      mid = array.length / 2 + 0.5
+      return array[mid]
+    end
+    if array.length % 2 == 0
+      mid1 = array.length / 2
+      average = (array[mid1] + array[mid1 - 1]) / 2.0
+        if average % 2 == 0
+          return average
+        else
+          mid2 = array.length / 2
+          average_float = (array[mid2] + array[mid2 -1]) / 2.0
+          return average_float
+        end
+    end
   end
 
   def self.sum_arrays(array1, array2)
-    array1.zip(array2).map { |x| x.inject(:+)}
+    if array1 == [] && array2 == []
+      return []
+    else
+      array1.zip(array2).map { |x| x.inject(:+)}
+    end
   end
 end
