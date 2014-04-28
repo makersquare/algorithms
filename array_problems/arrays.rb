@@ -13,6 +13,7 @@ module ArrayUtil
       return array.last
     when array.include?(NaN)
       return "There's something wrong with your array"
+
     end
 
 
@@ -28,6 +29,8 @@ module ArrayUtil
       nil
     when array.length == 1
       return array[0]
+    when array.length % 2 != 0
+      array[((array.length - 1)/2)]
 
 
     end
