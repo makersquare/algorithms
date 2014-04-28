@@ -31,7 +31,8 @@ module ArrayUtil
       return array[0]
     when array.length % 2 != 0
       array[((array.length - 1)/2)]
-
+    when array.length % 2 == 0
+      (array[((array.count - 1)/2)]+array[((array.count)/2)])/2
 
     end
 

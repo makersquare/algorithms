@@ -45,13 +45,13 @@ describe "ArrayUtil" do
       expect(ArrayUtil.middle_element([1])).to eq(1)
     end
 
-    xit "should return the middle element for arrays of odd size" do
+    it "should return the middle element for arrays of odd size" do
       expect(ArrayUtil.middle_element([1])).to eq(1)
       expect(ArrayUtil.middle_element([1, 2, 3])).to eq(2)
       expect(ArrayUtil.middle_element([1, 3, 5, 7, 9])).to eq(5)
     end
 
-    xit "should average the 2 middle elements for arrays of even size" do
+    it "should average the 2 middle elements for arrays of even size" do
       expect(ArrayUtil.middle_element([1, 3])).to eq(2)
       expect(ArrayUtil.middle_element([1, 3, 5, 7, 9, 11])).to eq(6)
     end
