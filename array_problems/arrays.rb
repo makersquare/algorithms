@@ -26,6 +26,8 @@ module ArrayUtil
     case
     when array.empty?
       nil
+    when array.length == 1
+      return array[0]
 
 
     end

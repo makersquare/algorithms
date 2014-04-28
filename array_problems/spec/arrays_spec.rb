@@ -41,7 +41,7 @@ describe "ArrayUtil" do
       expect(ArrayUtil.middle_element([])).to eq(nil)
     end
 
-    xit "should return the only element for array of size 1" do
+    it "should return the only element for array of size 1" do
       expect(ArrayUtil.middle_element([1])).to eq(1)
     end
 
