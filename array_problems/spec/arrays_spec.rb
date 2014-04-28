@@ -66,11 +66,11 @@ describe "ArrayUtil" do
       expect(ArrayUtil.sum_arrays([], [])).to eq([])
     end
 
-    xit "should return an array with the sum of two arrays with arrays size 1" do
+    it "should return an array with the sum of two arrays with arrays size 1" do
       expect(ArrayUtil.sum_arrays([5], [6])).to eq([11])
     end
 
-    xit "should return an array with the sum of two arrays with larger arrays" do
+    it "should return an array with the sum of two arrays with larger arrays" do
       expect(ArrayUtil.sum_arrays([5, 6, 7, 8], [6, 9, 12, 15])).to eq([11, 15, 19, 23])
     end
   end

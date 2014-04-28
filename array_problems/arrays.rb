@@ -41,7 +41,16 @@ module ArrayUtil
     case
     when array1.empty? && array2.empty?
       Array.new
-    when array1.count == 1 &&
+    when array1.count && array2.count == 1
+      Array.new << (array1[0] + array2[0])
+    when array1.count && array2.count > 1
+      x = 0
+      totals = []
+      while x < array1.length
+        totals << (array1[x] + array2[x])
+        x += 1
+      end
+      totals
 
     end
 
