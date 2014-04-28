@@ -31,7 +31,7 @@ describe "ArrayUtil" do
       expect(ArrayUtil.max([10, 10, 20])).to eq(20)
     end
 
-    xit "should not break when you have negative numbers" do
+    it "should not break when you have negative numbers" do
       expect(ArrayUtil.max([-1, -5, -10, -2])).to eq(-1)
     end
   end
