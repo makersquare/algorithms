@@ -15,13 +15,13 @@ describe "ArrayUtil" do
       expect(ArrayUtil.max([1])).to eq(1)
     end
 
-    xit "should return the larger element if the array has 2 elements" do
+    it "should return the larger element if the array has 2 elements" do
       expect(ArrayUtil.max([-1, 1])).to eq(1)
       expect(ArrayUtil.max([0, -10])).to eq(0)
       expect(ArrayUtil.max([1, 10])).to eq(10)
     end
 
-    xit "should find the largest number in a large array" do
+    it "should find the largest number in a large array" do
       expect(ArrayUtil.max([100, 50, 200, 73, 4.2, 80])).to eq(200)
     end
 
