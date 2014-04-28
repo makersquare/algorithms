@@ -32,7 +32,7 @@ module ArrayUtil
     when array.length % 2 != 0
       array[((array.length - 1)/2)]
     when array.length % 2 == 0
-      (array[((array.count - 1)/2)]+array[((array.count)/2)])/2
+      ((array[((array.count - 1)/2)].to_f+array[((array.count)/2)].to_f)/2)
 
     end
 

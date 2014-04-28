@@ -56,7 +56,7 @@ describe "ArrayUtil" do
       expect(ArrayUtil.middle_element([1, 3, 5, 7, 9, 11])).to eq(6)
     end
 
-    xit "should return floats when the middle elements average to a decimal" do
+    it "should return floats when the middle elements average to a decimal" do
       expect(ArrayUtil.middle_element([1, 2, 3, 4])).to eq(2.5)
     end
   end
