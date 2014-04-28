@@ -62,7 +62,7 @@ describe "ArrayUtil" do
   end
 
   describe ".sum_arrays" do
-    xit "should return an empty array if the inputs are empty" do
+    it "should return an empty array if the inputs are empty" do
       expect(ArrayUtil.sum_arrays([], [])).to eq([])
     end
 

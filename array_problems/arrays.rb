@@ -33,12 +33,17 @@ module ArrayUtil
       array[((array.length - 1)/2)]
     when array.length % 2 == 0
       ((array[((array.count - 1)/2)].to_f+array[((array.count)/2)].to_f)/2)
-
     end
 
   end
 
   def self.sum_arrays(array1, array2)
+    case
+    when array1.empty? && array2.empty?
+      Array.new
+    when array1.count == 1 &&
+
+    end
 
 
   end
