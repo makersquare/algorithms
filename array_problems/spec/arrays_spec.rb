@@ -25,7 +25,7 @@ describe "ArrayUtil" do
       expect(ArrayUtil.max([100, 50, 200, 73, 4.2, 80])).to eq(200)
     end
 
-    xit "should not break when you have duplicates" do
+    it "should not break when you have duplicates" do
       expect(ArrayUtil.max([10, 10])).to eq(10)
       expect(ArrayUtil.max([1, 10, 10])).to eq(10)
       expect(ArrayUtil.max([10, 10, 20])).to eq(20)

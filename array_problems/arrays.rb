@@ -9,7 +9,7 @@ module ArrayUtil
     when array.length == 1
       return array[0]
     when array.length > 1
-      array.sort!
+      array.sort!.uniq!
       return array.last
     else
       puts "It's not working"
