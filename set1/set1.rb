@@ -14,8 +14,9 @@ module Set1
 			end
 		end
 
-		array[smallest_index] = array[0]
-		array[0] = smallest_value
+		# array[smallest_index] = array[0]
+		# array[0] = smallest_value
+		array[0], array[smallest_index] = array[smallest_index], array[0]
 
 		return array
 
@@ -102,4 +103,4 @@ def test_sum_3
 	puts Benchmark.measure { Set1.find_sum_3(array_100) } #100 = 0.203s
 end
 
-test_sum_3
+# test_sum_3
