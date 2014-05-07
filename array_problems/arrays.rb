@@ -39,3 +39,32 @@ module ArrayUtil
     end
   end
 end
+
+
+#Patrick in-class solutions
+# def self.max(array)
+#   max_value = array[0]
+#   for x in 0...array.length
+#     max_value = array[x] if array[x] > max_value
+#   end
+#   max_value
+# end
+
+
+# def self.middle_element(array)
+#   return nil if array.length = 0
+#   if array.length % 2 == 1
+#     array[array.length] / 2
+#   else
+#     array[array.length / 2] + array[array.length - 1] / 2.0
+#   end
+# end
+
+# def self.sum_arrays(array1, array2)
+#   solution = []
+#   for x in 0...array.length
+#     solution << array1[x] + array2[x]
+#   end
+#   solution
+# end
+
