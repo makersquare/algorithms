@@ -39,7 +39,7 @@ describe "MyHash" do
       expect(@hash[@second_elem]).to eq(nil)
     end
 
-    xit "should not find an element that you didn't put in despite index" do
+    it "should not find an element that you didn't put in despite index" do
       @hash[@first_elem] = "it is here"
       expect(@hash[@second_elem]).to eq(nil)
     end
@@ -51,7 +51,7 @@ describe "MyHash" do
       expect(@hash["bye"]).to eq("good bye")
     end
 
-    xit "should allow objects with same index to both be stored" do
+    it "should allow objects with same index to both be stored" do
       @hash[@first_elem] = 30
       @hash[@second_elem] = 50
 
@@ -64,8 +64,8 @@ describe "MyHash" do
       expect(@hash[@first_elem]).to eq(35)
       expect(@hash[@second_elem]).to eq(60)
     end
-    
-    xit "should allow more than 64 key value pairs to be inserted" do
+
+    it "should allow more than 64 key value pairs to be inserted" do
       128.times do |x|
         @hash["key#{x}"] = "value#{x}"
       end
