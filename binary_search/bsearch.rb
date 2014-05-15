@@ -4,6 +4,7 @@ module ArrayUtil
   def self.bsearch(array, element)
     # If the array is empty return a result
     # Otherwise call your helper _bsearch method
+
     # array = [3, 4, 6, 1, 12, 22, 9, 10]
     return false if element == nil || array.size == 0
     array.sort!

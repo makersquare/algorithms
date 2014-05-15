@@ -62,3 +62,44 @@ module Sort
     end
   end
 end
+
+  def self.sort(array)
+    if array.length <= 1
+      return array
+    else
+      left = array[0...array.length/2]
+      right = array[array.length/2...array.length]
+
+      left.length.times do |first|
+        min = first
+        first.upto(left.length-1) do |i|
+          min = i if left[i] < left[min]
+        end
+        left[first], left[min] = left[min], left[first]
+      end
+
+      right.length.times do |first|
+        min = first
+        first.upto(right.length-1) do |i|
+          min = i if right[i] < right[min]
+        end
+        right[first], right[min] = right[min], right[first]
+      end
+    end
+    result = []
+    result << left << right
+
+  end
+
+  def self.merge(array1, array2)
+    result = []
+  end
+
+
+end
+
+# split array into 2, sort those and then merge the 2 together
+# left = []
+# left << array.length/2
+# right = []
+
