@@ -24,7 +24,7 @@ describe("Trie", function () {
         expect(trie.includes("bird")).toBeTruthy();
       });
 
-      it("should exclude inserted strings", function () {
+      it("should exclude non-inserted strings", function () {
         expect(trie.includes(undefined)).toBeFalsy();
         expect(trie.includes("")).toBeFalsy();
         expect(trie.includes("d")).toBeFalsy();
