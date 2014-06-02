@@ -1,0 +1,10 @@
+source 'https://rubygems.org'
+
+gem 'sinatra'
+gem 'pry-debugger'
+gem 'rspec'
+gem 'data_mapper'
+gem 'unirest'
+gem 'dm-sqlite-adapter'
+gem 'sqlite3'
+gem 'json'
