@@ -34,3 +34,6 @@ build/
 .rvmrc
 
 */vendor
+
+Gemfile.lock
+*/Gemfile.lock
