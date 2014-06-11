@@ -14,7 +14,7 @@ end
 class Deck
   attr_accessor :deck
   def initialize
-    @deck = nil # Determine the best way to hold the cards
+    @cards = nil # Determine the best way to hold the cards
   end
 
   # Given a card, insert it on the bottom your deck
