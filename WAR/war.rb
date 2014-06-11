@@ -63,7 +63,7 @@ class War
 end
 
 
-class WarAPI
+module WarAPI
   # This method will take a card from each player and
   # return a hash with the cards that each player should receive
   def self.play_turn(player1, card1, player2, card2)
