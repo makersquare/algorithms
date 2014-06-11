@@ -1,2 +1,6 @@
 env.rb
 vendor/*
+
+
+Gemfile.lock
+*/Gemfile.lock
