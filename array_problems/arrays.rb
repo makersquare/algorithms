@@ -51,8 +51,51 @@ module ArrayUtil
   end
 
   def self.middle_element(array)
+  	if array == []
+  		return nil
+  	end
+
+  	if array.length == 1
+  		return array[0]
+  	end
+
+  	if array.length % 2 == 1
+  		half = (array.length/2)
+  		return array[half]
+  	end
+
+  	if array.length % 2 == 0
+  		middle = (array[array.length/2] + array[array.length/2-1])/2.0
+  		if middle.class == Float
+  			return middle
+  		else
+  			return middle.to_i
+  		end
+  	end
   end
 
+
   def self.sum_arrays(array1, array2)
+  	if array1 == [] && array2 == []
+  		return []
+  	end
+
+  	if array1.length == 1 && array2.length == 1
+  		sum = array1[0] + array2[0]
+  		return Array(sum)
+  	end
+
+  	if array1.length >= 2 && array1.length == array2.length
+  		i = 0
+  		sum = []
+  		for i in 0..array1.length
+  			sum << array1[i] + array2[i]
+  			i += 1
+  		end
+  	end
+
+
+
+  	
   end
 end
