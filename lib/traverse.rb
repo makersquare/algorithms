@@ -15,15 +15,15 @@ class Traverse
     yield tree.data
   end
 
-  def self.with_preorder(node)
+  def self.with_preorder(node, &block)
     # TODO
   end
 
-  def self.with_inorder(node)
+  def self.with_inorder(node, &block)
     # TODO
   end
 
-  def self.with_postorder(node)
+  def self.with_postorder(node, &block)
     # TODO
   end
 
