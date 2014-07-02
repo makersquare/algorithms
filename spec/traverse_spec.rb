@@ -66,6 +66,6 @@ describe Traverse do
     end
 
     expect(visits.count).to eq 9
-    expect(visits).to eq %w{A C E D B H I G F}
+    expect(visits).to eq %w{F B G A D I C E H}
   end
 end
