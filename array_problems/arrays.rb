@@ -30,7 +30,6 @@ module ArrayUtil
   		end
   	end
 
-
   	if array.length > 2
   		for i in 0...limit
   			if array[i] >= array[i+1] && array[i] >= array[i+2]
@@ -82,20 +81,20 @@ module ArrayUtil
 
   	if array1.length == 1 && array2.length == 1
   		sum = array1[0] + array2[0]
-  		return Array(sum)
+      return Array(sum)
   	end
 
   	if array1.length >= 2 && array1.length == array2.length
   		i = 0
   		sum = []
-  		for i in 0..array1.length
-  			sum << array1[i] + array2[i]
+  		for i in 0...array1.length
+  			sum << (array1[i] + array2[i])
   			i += 1
   		end
-  	end
-
-
-
-  	
+      # array1.size.times do |index|
+      #   sum << (array1[index] + array2[index])
+      # end
+      sum
+  	end  	
   end
 end
