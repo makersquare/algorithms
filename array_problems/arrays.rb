@@ -3,8 +3,10 @@ require 'rubygems'
 
 module ArrayUtil
   def self.max(array)
+    return nil if array.empty?
+    return array[0] if array.size == 1
   	array = ArrayUtil.eleminate_nonnumbers(array)
-  	largest_num = 0
+  	largest_num = -1000
   	array.each do |x| 
   		largest_num = x if x > largest_num
   	end
@@ -14,7 +16,9 @@ module ArrayUtil
   def self.middle_element(array)
   	array = ArrayUtil.eleminate_nonnumbers(array)
   	x = array.length
-  	if x % 2 == 1
+  	if x == 0
+      return nil
+    elsif x % 2 == 1
   		return array[x/2]
   	else
   		y = array[x/2] + array[(x/2)-1]
