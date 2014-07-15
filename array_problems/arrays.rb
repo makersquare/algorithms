@@ -1,21 +1,25 @@
 require 'rubygems'
-#require 'pry-debugger'
+require 'pry-debugger'
 
 module ArrayUtil 
 
   def self.max(array)
-  	max = 0
+  	max = array[0]
   	array.each{ |i| if i.to_i>max then max=i.to_i end}
   		max
   end
 
   def self.middle_element(array)
-  	mid = array.size/2
- 	if (array.size%2==0)
- 		(array[mid] + array[mid-1])/2.0
+
+    mid = array.size/2
+  
+    if array.length == 0
+      return nil 
+ 	  elsif (array.size%2==0)
+ 		   (array[mid] + array[mid-1])/2.0
   	else
   		array[mid]
- 	end
+    end
   end
 
   def self.sum_arrays(array1, array2)
