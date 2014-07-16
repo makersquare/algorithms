@@ -1,5 +1,5 @@
 module Set1
-  def self.swap_small(array)
+  def self.swap_small(array) # O(n)
     if array.length == 1
       return array
     end
@@ -15,7 +15,7 @@ module Set1
       array
   end
 
-  def self.find_sum_2(array, sum = 0)
+  def self.find_sum_2(array, sum = 0) #O(n)
     return true if array.count(0) > 0
     
     array.each do |x|
@@ -24,7 +24,7 @@ module Set1
     return false
   end
 
-  def self.find_sum_3(array)
+  def self.find_sum_3(array) #O(n^3)
     return true if array.count(0) > 0
 
     array.each do |x|
