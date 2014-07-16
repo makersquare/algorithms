@@ -34,15 +34,15 @@ module Set1
   end
   #find_sum_2 runtime: O(n)
 
-  #approach 1 would be to check all combinations O(n^(2))
-  #approach 2 would be to sort the array. O(n log n)
-  #search for x, use binary search for sumofx. O(nlogn)
+  #approach 1 would be to check all combinations O(n^(2)) slow
+  #approach 2 would be to sort the array. O(n log n) still slow
+  #fill a hash table. O(n) fastest
 
 
 
 
 
-  def self.find_sum_3(array)
+  def self.find_sum_3(array) #3sum
   	return true if array.include? 0
   	array.sort!
   	#O(n^(2))
@@ -67,20 +67,5 @@ module Set1
   	#if true not returned, 3 values that add to 0 do not exist, therefore return false
 
   	return false
-
- #  	sum = 0
-	# hash = {}
-	# (0..array.length - 1).each do |num|
-	# 	hash[array[num]] = num
-	# end
-
-	# (0...array.length).each do |i|
-	# 	(0...array.length).each do |j|
-	# 		if hash[sum - array[i] - array[j]] != nil
-	# 			# puts "Pair values #{i} and #{j} and #{hash[sum - array[j] - array[j]]} have sum #{sum}"
-	# 			return true
-	# 		end
-	# 	end
-	# end
   end
 end
