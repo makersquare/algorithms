@@ -98,6 +98,19 @@ class Predictor
     string.split(/\W+/).map(&:downcase) # Split by non-words
   end
 
+  # def keyword_density(dataset)
+  #   CATEGORIES.each do |category|
+  #     books[category] = {}
+  #     Find.find("data/#{dataset}/#{category}") do |file|
+  #       next if File.directory?(file)
+  #       next if file.split("/").last[0] == "." # Ignore hidden files
+
+  #       content = tokenize(File.read(file))
+  #       books[category] << [file, content]
+  #     end
+  #   end
+  # end
+
   # Internal: Load books from files.
   #
   # dataset - The dataset to use: sample, training, test.
