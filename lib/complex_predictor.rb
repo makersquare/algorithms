@@ -40,7 +40,7 @@ class ComplexPredictor < Predictor
     max_score = 0
     max_category = nil
     range_starts = tokens.length/4
-    range_ends = range_starts + 500
+    range_ends = range_starts + 250
     @data.each do |category, keywords|
       cat_score = 0
       tokens[range_starts..range_ends].each do |word|
