@@ -1,6 +1,7 @@
 require_relative 'lib/simple_predictor'
 require_relative 'lib/complex_predictor'
 
+
 def run!(predictor_klass, opts={})
   puts "+----------------------------------------------------+"
   puts "| #{predictor_klass}#{" " * (51 - predictor_klass.to_s.size)}|"
