@@ -2,7 +2,7 @@ require 'set'
 require 'find'
 
 class Predictor
-  CATEGORIES = [:astronomy, :philosophy, :religion, :archeology]
+  CATEGORIES = [:philosophy,:astronomy, :archeology,:religion]
   STOP_WORDS = Set.new(File.read('data/stopwords.txt').split(','))
 
   # Public: Initialize object.
@@ -42,7 +42,7 @@ class Predictor
   # Returns true if you should use this token. In our project, "token" is
   # synonymous with "word".
   def good_token?(token)
-    !STOP_WORDS.include?(token) && token.size > 2
+    !STOP_WORDS.include?(token) && token.size > 3
   end
 
   #############################################################################
