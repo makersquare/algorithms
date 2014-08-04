@@ -4,7 +4,6 @@ class ComplexPredictor < Predictor
 
 
   def build(category)
-
     length = @all_books[category].length - 1
     words_hash = Hash.new(0)
 
@@ -15,8 +14,10 @@ class ComplexPredictor < Predictor
     end
     
     return_array = []
+
     return_hash = words_hash.sort_by{|key, value| value}.reverse[0..200]
     return_hash.each { |k,v| return_array << k }
+    
     return return_array
   end
 
@@ -47,12 +48,11 @@ class ComplexPredictor < Predictor
     @goodtokens.each do |word|
       testhash[word] += 1
     end
-    # piss
-
-    newtesthash = testhash.sort_by{|key, value| value}.reverse[0..60]
+    
+    newtesthash = testhash.sort_by{|key, value| value}.reverse[0..200]
     @bookarr = []
     newtesthash.each { |k,v| @bookarr << k }
-# shoot flub
+
     scores = [score(@philarr), score(@astroarr), score(@archarr), score(@relarr)]
     case 
       when scores.max == scores.first
@@ -64,7 +64,7 @@ class ComplexPredictor < Predictor
       when scores.max == scores[3]
         return :religion
     end
-# :(
+
 
   end 
 

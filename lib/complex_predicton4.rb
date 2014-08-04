@@ -47,12 +47,11 @@ class ComplexPredictor < Predictor
     @goodtokens.each do |word|
       testhash[word] += 1
     end
-    # piss
-
+    
     newtesthash = testhash.sort_by{|key, value| value}.reverse[0..60]
     @bookarr = []
     newtesthash.each { |k,v| @bookarr << k }
-# shoot flub
+
     scores = [score(@philarr), score(@astroarr), score(@archarr), score(@relarr)]
     case 
       when scores.max == scores.first
@@ -64,7 +63,7 @@ class ComplexPredictor < Predictor
       when scores.max == scores[3]
         return :religion
     end
-# :(
+
 
   end 
 
