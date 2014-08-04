@@ -47,7 +47,7 @@ class ComplexPredictor < Predictor
     @goodtokens.each do |word|
       testhash[word] += 1
     end
-    # piss
+    #argh
 
     newtesthash = testhash.sort_by{|key, value| value}.reverse[0..60]
     @bookarr = []
