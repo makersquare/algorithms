@@ -35,6 +35,14 @@ describe 'Sort' do
       end
     end
 
+    context 'when the array includes decimals' do
+      it "correctly sorts decimals" do
+        array = [6, 9, 8, -2, 100, 0, 8.5, 42.42]
+        result = [-2, 0, 6, 8, 8.5, 9, 42.42, 100]
+        expect(Sort.selection_sort(array)).to eq(result)
+      end
+    end
+
 
   end
 end
