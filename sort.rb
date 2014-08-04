@@ -18,4 +18,23 @@ module Sort
     end
     array
   end
+
+  def self.bubble_sort(array)
+    all_sorted=false
+    n = 2
+    array.each {|x| return nil if !x.is_a?(Numeric)}
+    while all_sorted==false
+      last = array.length - n
+      all_sorted = true
+      (0..last).each do |i|
+        if array[i] > array[i+1]
+          array[i], array[i+1] = array[i+1], array[i]
+          all_sorted=false
+        end
+      end
+      n += 1
+    end
+    array
+  end
+
 end
