@@ -27,5 +27,14 @@ describe 'Sort' do
       end
     end
 
+    context 'when the array is large' do
+      it "correctly sorts arrays of any size" do
+        array = [6, 9, 8, -2, 100, 0, -44, 4, 5, 8, 1000, -900, -50, 75, 75, 99, 1000]
+        result = [-900, -50, -44, -2, 0, 4, 5, 6, 8, 8, 9, 75, 75, 99, 100, 1000, 1000]
+        expect(Sort.selection_sort(array)).to eq(result)
+      end
+    end
+
+
   end
 end
