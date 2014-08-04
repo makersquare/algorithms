@@ -43,6 +43,15 @@ describe 'Sort' do
       end
     end
 
+    context 'when non-numbers are included' do
+      it "returns nil" do
+        array = [6, 9, 8, -2, "dog", 0, -44]
+        result = nil
+        expect(Sort.selection_sort(array)).to eq(result)
+      end
+    end
+
+
 
   end
 end
