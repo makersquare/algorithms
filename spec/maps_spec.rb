@@ -93,6 +93,7 @@ describe Map do
           map.add_road("c8", "c7", 50)
           map.add_road("c10", "c1", 50)
           map.add_road("c10", "c3", 50)
+          map.add_road("c4", "c3", 50)
           map.add_road("c4", "c11", 50)
           map.add_road("c12", "c11", 50)
           map.add_road("c12", "c13", 50)
@@ -102,14 +103,14 @@ describe Map do
 
         it "finds best paths" do
           expect(map.find_path("c5", "c9")).to eq(500)
-          expect(map.find_path("c12", "c8")).to eq(150)
+          expect(map.find_path("c12", "c8")).to eq(250)
         end
 
         it "finds best path after alterations" do
           map.add_road("c1", "c12", 25)
           map.add_road("c2", "c12", 25)
           expect(map.find_path("c5", "c9")).to eq(450)
-          expect(map.find_path("c12", "c8")).to eq(125)
+          expect(map.find_path("c12", "c8")).to eq(225)
         end
       end
     end
