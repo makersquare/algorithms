@@ -53,5 +53,34 @@ describe Map do
         expect(map.find_path("c3", "c2")).to eq(200)
       end
     end
+
+    context "cities connected with no cycles" do
+      before do
+        map.add_road("c1", "c2", 100)
+        map.add_road("c1", "c3", 100)
+        map.add_road("c1", "c4", 100)
+        map.add_road("c2", "c5", 100)
+        map.add_road("c2", "c6", 100)
+        map.add_road("c3", "c7", 100)
+        map.add_road("c3", "c8", 100)
+        map.add_road("c8", "c9", 100)
+      end
+
+      it "finds all existing connections" do
+        expect(map.find_path("c1", "c9")).to eq(300)
+        expect(map.find_path("c1", "c6")).to eq(200)
+        expect(map.find_path("c9", "c6")).to eq(500)
+      end
+
+      it "finds new paths" do
+        map.add_city("c10")
+        map.add_city("c11")
+        map.add_road("c10", "c11", 150)
+        expect(map.find_path("c10", "c11")).to eq(150) # 150
+        expect(map.find_path("c1", "c11")).to eq(nil) # nil
+        map.add_road("c4", "c10", 200)
+        expect(map.find_path("c1", "c11")).to eq(450) # 450
+      end
+    end
   end
 end
