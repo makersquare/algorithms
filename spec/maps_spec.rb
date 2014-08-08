@@ -50,11 +50,11 @@ describe Map do
       end
 
       it "connects cities in the reverse order" do
-        expect(map.find_path("c3", "c2")).to eq(200)
+        expect(map.find_path("c3", "c1")).to eq(200)
       end
     end
 
-    context "cities connected with no cycles" do
+    context "cities with complex connections" do
       before do
         map.add_road("c1", "c2", 100)
         map.add_road("c1", "c3", 100)
@@ -66,20 +66,51 @@ describe Map do
         map.add_road("c8", "c9", 100)
       end
 
-      it "finds all existing connections" do
-        expect(map.find_path("c1", "c9")).to eq(300)
-        expect(map.find_path("c1", "c6")).to eq(200)
-        expect(map.find_path("c9", "c6")).to eq(500)
+      context "cities connected with no cycles" do
+        it "finds all existing connections" do
+          expect(map.find_path("c1", "c9")).to eq(300)
+          expect(map.find_path("c1", "c6")).to eq(200)
+          expect(map.find_path("c9", "c6")).to eq(500)
+        end
+
+        it "finds new paths" do
+          map.add_city("c10")
+          map.add_city("c11")
+          map.add_road("c10", "c11", 150)
+          expect(map.find_path("c10", "c11")).to eq(150) # 150
+          expect(map.find_path("c1", "c11")).to eq(nil) # nil
+          map.add_road("c4", "c10", 200)
+          expect(map.find_path("c1", "c11")).to eq(450) # 450
+        end
       end
 
-      it "finds new paths" do
-        map.add_city("c10")
-        map.add_city("c11")
-        map.add_road("c10", "c11", 150)
-        expect(map.find_path("c10", "c11")).to eq(150) # 150
-        expect(map.find_path("c1", "c11")).to eq(nil) # nil
-        map.add_road("c4", "c10", 200)
-        expect(map.find_path("c1", "c11")).to eq(450) # 450
+      context "cities with cycles" do
+        before do
+          map.add_city("c10")
+          map.add_city("c11")
+          map.add_city("c12")
+          map.add_city("c13")
+          map.add_road("c8", "c7", 50)
+          map.add_road("c10", "c1", 50)
+          map.add_road("c10", "c3", 50)
+          map.add_road("c4", "c11", 50)
+          map.add_road("c12", "c11", 50)
+          map.add_road("c12", "c13", 50)
+          map.add_road("c13", "c2", 50)
+          map.add_road("c11", "c13", 75)
+        end
+
+        it "finds best paths" do
+          expect(map.find_path("c5", "c9")).to eq(500)
+          expect(map.find_path("c12", "c8")).to eq(150)
+        end
+
+        it "finds best path after alterations" do
+          map.add_road("c1", "c12", 25)
+          map.add_road("c2", "c12", 25)
+          expect(map.find_path("c5", "c9")).to eq(450)
+          expect(map.find_path("c12", "c8")).to eq(125)
+        end
       end
     end
   end
