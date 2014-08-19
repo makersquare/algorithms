@@ -82,6 +82,17 @@ module Sort
     sol = Sort.binary_search(sorted_array[mid+1..-1], search_element) if  value < search_element  
     sol  
   end
+
+  def self.iterative_binary(sorted_array, search_element) # returns index
+    mid = sorted_array.length/2
+    mid.times do |_|
+      value = sorted_array[mid]    
+      return mid if value == search_element
+      mid = mid/2 if  value > search_element
+      mid = mid + mid/2 if  value < search_element  
+    end
+    return nil
+  end
 end
 
 class Fibonacci
