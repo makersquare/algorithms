@@ -32,6 +32,10 @@ class Queue
     Queue.new(value)
   end
 
+  def self.peek
+    @@first_in_line
+  end
+
   def self.shift
     first = @@first_in_line
     second = @@first_in_line.next_node
