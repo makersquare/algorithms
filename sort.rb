@@ -37,4 +37,40 @@ module Sort
     array
   end
 
+  def self.mergesort(arr)
+    return arr if arr.length == 1
+    mid = arr.length/2
+    array1 = Sort.mergesort(arr[0..mid-1])
+    array2 = Sort.mergesort(arr[mid..-1])
+
+    def merge(array1, array2)
+      a = 0
+      b = 0
+      sorted_array = []
+
+      while (a < array1.length && b < array2.length)
+        if array1[a] < array2[b] 
+          sorted_array.push(array1[a])
+          a += 1
+        else
+          sorted_array.push(array2[b])
+          b += 1
+        end
+      end
+
+      while (a < array1.length)
+          sorted_array.push(array1[a])
+          a += 1  
+      end
+
+      while (b < array2.length)
+          sorted_array.push(array2[b])
+          b += 1  
+      end
+
+      sorted_array
+    end
+    
+    merge(array1, array2)
+  end
 end
