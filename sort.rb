@@ -83,3 +83,29 @@ module Sort
     sol  
   end
 end
+
+class Fibonacci
+  @cache = [0, 1, 1, 2]
+  
+  def self.it_fib(n)
+    return 1 if n<= 2
+    x = y = 1
+    (3..n).each { |_| y, x = y+x, y}
+    y
+  end
+
+  def self.rec_fib(n)
+    return 1 if n <= 2
+    Sort.rec_fib(n-1) + Sort.rec_fib(n-2)
+  end
+
+  def self.cache_rec_fib(n)
+    if !@cache[n] 
+      p n
+      n1 = @cache[n-1] ||= Sort.cache_rec_fib(n-1)
+      n2 = @cache[n-2] ||= Sort.cache_rec_fib(n-2)
+      @cache[n] = n1 + n2
+    end
+    @cache[n]
+  end
+end
