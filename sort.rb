@@ -101,10 +101,7 @@ class Fibonacci
 
   def self.cache_rec_fib(n)
     if !@cache[n] 
-      p n
-      n1 = @cache[n-1] ||= Sort.cache_rec_fib(n-1)
-      n2 = @cache[n-2] ||= Sort.cache_rec_fib(n-2)
-      @cache[n] = n1 + n2
+      @cache[n] = Fibonacci.cache_rec_fib(n-2) + Fibonacci.cache_rec_fib(n-1)
     end
     @cache[n]
   end
