@@ -73,4 +73,13 @@ module Sort
     
     merge(array1, array2)
   end
+
+  def self.binary_search(sorted_array, search_element)
+    mid = sorted_array.length/2
+    value = sorted_array[mid]
+    return true if value == search_element
+    sol = Sort.binary_search(sorted_array[0..mid-1], search_element) if  value > search_element
+    sol = Sort.binary_search(sorted_array[mid+1..-1], search_element) if  value < search_element  
+    sol  
+  end
 end
