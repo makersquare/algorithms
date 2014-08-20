@@ -49,3 +49,41 @@ class Queue
   end
 end
 
+module Q
+  class Queue
+    @@first_in_line = nil
+    @@last_in_line = nil
+
+    def self.push(value)
+      new_last = Q::Node.new(value)
+      @@last_in_line.next_node = new_last unless @@last_in_line.nil?
+      @@last_in_line = new_last
+      @@first_in_line = new_last if @@first_in_line.nil?
+    end
+
+    def self.peek
+      @@first_in_line
+    end
+
+    def self.shift
+      first = @@first_in_line
+      second = @@first_in_line.next_node
+      @@first_in_line.next_node = nil
+      if second.nil?
+        @@first_in_line, @@last_in_line = nil, nil
+      else
+        @@first_in_line = second
+      end
+      first
+    end
+  end
+
+  class Node
+    attr_accessor :next_node
+    def initialize(value)
+      @value = value
+      @next_node = nil
+    end
+  end
+end
+
