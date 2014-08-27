@@ -1,5 +1,5 @@
 require 'rubygems'
-require 'pry-debugger'
+require 'pry-byebug'
 
 module ArrayUtil
   def self.max(array)

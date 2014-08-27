@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'rspec'
-require 'pry-debugger'
+require 'pry-byebug'
 require_relative '../set1.rb'
 
 describe "Set1" do
