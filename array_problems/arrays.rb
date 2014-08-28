@@ -13,11 +13,16 @@ module ArrayUtil
   end
 
   def self.middle_element(array)
-    array.sort!
-    # length = array.length
-    # if length.is_odd?
-    #   array[(length - 1)/2]
-    # end
+    length = array.length
+    mid_index = (length-1)/2
+    if length == 0
+      nil
+    elsif length.odd?
+      middle = array[mid_index]
+    else
+      middle = (array[mid_index] + array[mid_index + 1])/2.0
+    end
+    middle
   end
 
   def self.sum_arrays(array1, array2)
