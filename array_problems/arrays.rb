@@ -26,5 +26,16 @@ module ArrayUtil
   end
 
   def self.sum_arrays(array1, array2)
+    sum = []
+    if array1.empty? && array2.empty?
+      sum
+    else
+      i = 0
+      while i < array1.length
+        sum << (array1[i] + array2[i])
+        i += 1
+      end
+    end
+    sum
   end
 end
