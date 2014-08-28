@@ -30,5 +30,14 @@ module ArrayUtil
   end
 
   def self.sum_arrays(array1, array2)
+    if array1.count == 0
+      array1
+    else
+      sum = []
+      array1.each_index do |index|
+        sum.push(array1[index] + array2[index])
+      end
+      sum
+    end
   end
 end
