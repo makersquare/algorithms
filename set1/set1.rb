@@ -1,6 +1,5 @@
 module Set1
   def self.swap_small(array)
-    #swap_small([5,7,2,9]) # => [2, 7, 5, 9]
     #O(n)
 
     smallest = array[0]
@@ -46,5 +45,16 @@ module Set1
   end
 
   def self.find_sum_3(array)
+    result = []
+    if array.empty?
+      false
+    elsif array.include? 0
+      true
+    elsif array.any?{|x| x < 0}
+      true
+    else
+      false
+    end
+    
   end
 end
