@@ -17,10 +17,19 @@ module Set1
 
   #O(n2) - have to check each element against each other to find the sum
   def self.find_sum_2(array, sum = 0)
-    
+    return false if array.empty?
+    array.each do |number_base|
+      array.each do |adding_number|
+        if ((number_base + adding_number) == sum)
+          return true
+        end
+      end
+    end
+    return false
   end
 
   #O(n2^)
   def self.find_sum_3(array)
+    
   end
 end
