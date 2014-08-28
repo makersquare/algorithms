@@ -15,6 +15,18 @@ module ArrayUtil
   end
 
   def self.middle_element(array)
+    if array.count == 1
+      array[0]
+    elsif array.count > 1
+      length = array.count
+      if length % 2 == 0
+        first_middle = (length / 2).to_i - 1
+        second_middle = first_middle + 1
+        (array[first_middle] + array[second_middle]) / 2.0
+      else
+        array[length / 2]
+      end
+    end
   end
 
   def self.sum_arrays(array1, array2)
