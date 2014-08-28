@@ -12,6 +12,18 @@ module Set1
   end
 
   def self.find_sum_2(array, sum = 0)
+    return false if array.length == 0
+    return true if (array.length == 1) && (array[0] == 0)
+    less_than_zero = []
+    greater_than_zero = []
+
+    array.each_index do |index|
+      return true if array[index] == 0
+      array.each_index do |second_index|
+        return true if array[index] + array[second_index] == 0
+      end
+    end
+    false
   end
 
   def self.find_sum_3(array)

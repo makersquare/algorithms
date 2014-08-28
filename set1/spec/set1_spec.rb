@@ -41,7 +41,7 @@ describe "Set1" do
       expect(Set1.find_sum_2([5, 20, -3, 100, -20, 2])).to eq(true)
     end
 
-    xit "should return false if none of the numbers add to 0" do
+    it "should return false if none of the numbers add to 0" do
       expect(Set1.find_sum_2([5, 6, 7, 8, -1, -2, -3, -4])).to eq(false)
     end
   end
