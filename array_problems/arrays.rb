@@ -4,11 +4,7 @@ require 'pry-byebug'
 module ArrayUtil
   def self.max(array)
     curr_max = array[0]
-    array.each do |x|
-      if x > curr_max
-        curr_max = x
-      end
-    end
+    array.each {|x| x > curr_max ? curr_max = x : curr_max}
     curr_max
   end
 
@@ -18,11 +14,10 @@ module ArrayUtil
     if length == 0
       nil
     elsif length.odd?
-      middle = array[mid_index]
+      array[mid_index]
     else
-      middle = (array[mid_index] + array[mid_index + 1])/2.0
+      (array[mid_index] + array[mid_index + 1])/2.0
     end
-    middle
   end
 
   def self.sum_arrays(array1, array2)
