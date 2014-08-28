@@ -1,5 +1,5 @@
 module Set1
-  def self.swap_small(array)
+  def self.swap_small(array) #=> O(n)
     first_number = array.first
     smallest_number = nil
     position = nil
@@ -20,7 +20,16 @@ module Set1
     end
   end
 
-  def self.find_sum_2(array, sum = 0)
+  def self.find_sum_2(array, sum = 0) #=> O(n**2)
+    bool = false
+    array.each do |num|
+      array.each do |num2|
+        if num + num2 == 0
+          bool = true
+        end
+      end
+    end
+    bool
   end
 
   def self.find_sum_3(array)
