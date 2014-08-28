@@ -37,30 +37,30 @@ describe "ArrayUtil" do
   end
 end
 
-#   describe ".middle_element" do
-#     it "should return nil for an empty array" do
-#       expect(ArrayUtil.middle_element([])).to eq(nil)
-#     end
+  describe ".middle_element" do
+    it "should return nil for an empty array" do
+      expect(ArrayUtil.middle_element([])).to eq(nil)
+    end
 
-#     it "should return the only element for array of size 1" do
-#       expect(ArrayUtil.middle_element([1])).to eq(1)
-#     end
+    it "should return the only element for array of size 1" do
+      expect(ArrayUtil.middle_element([1])).to eq(1)
+    end
 
-#     it "should return the middle element for arrays of odd size" do
-#       expect(ArrayUtil.middle_element([1])).to eq(1)
-#       expect(ArrayUtil.middle_element([1, 2, 3])).to eq(2)
-#       expect(ArrayUtil.middle_element([1, 3, 5, 7, 9])).to eq(5)
-#     end
+    it "should return the middle element for arrays of odd size" do
+      expect(ArrayUtil.middle_element([1])).to eq(1)
+      expect(ArrayUtil.middle_element([1, 2, 3])).to eq(2)
+      expect(ArrayUtil.middle_element([1, 3, 5, 7, 9])).to eq(5)
+    end
 
-#     it "should average the 2 middle elements for arrays of even size" do
-#       expect(ArrayUtil.middle_element([1, 3])).to eq(2)
-#       expect(ArrayUtil.middle_element([1, 3, 5, 7, 9, 11])).to eq(6)
-#     end
+    it "should average the 2 middle elements for arrays of even size" do
+      expect(ArrayUtil.middle_element([1, 3])).to eq(2)
+      expect(ArrayUtil.middle_element([1, 3, 5, 7, 9, 11])).to eq(6)
+    end
    
-#     it "should return floats when the middle elements average to a decimal" do
-#       expect(ArrayUtil.middle_element([1, 2, 3, 4])).to eq(2.5)
-#     end
-#   end
+    it "should return floats when the middle elements average to a decimal" do
+      expect(ArrayUtil.middle_element([1, 2, 3, 4])).to eq(2.5)
+    end
+  end
 
 #   describe ".sum_arrays" do
 #     it "should return an empty array if the inputs are empty" do
