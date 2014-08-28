@@ -43,6 +43,7 @@ module Set1
     return false
   end
 
+  #O(n^3) method 
   def self.find_sum_3(array)
     
     if (array.size == 1 && array[0]==0)
