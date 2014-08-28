@@ -32,6 +32,17 @@ module Set1
     bool
   end
 
-  def self.find_sum_3(array)
+  def self.find_sum_3(array) #=> O(n**3)
+    bool = false
+      array.each do |num|
+        array.each do |num2|
+          array.each do |num3|
+            if num == 0 || num + num2 + num3 == 0
+              bool = true
+            end
+          end
+        end
+      end
+    bool
   end
 end
