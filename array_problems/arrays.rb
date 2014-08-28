@@ -3,6 +3,8 @@ require 'pry-byebug'
 
 module ArrayUtil
   def self.max(array)
+    array.sort!
+    array[-1]
   end
 
   def self.middle_element(array)
