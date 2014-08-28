@@ -1,4 +1,5 @@
 module Set1
+  # I think this method is O(n)
   def self.swap_small(array)
     if array.length == 1
       return array
@@ -14,7 +15,7 @@ module Set1
     array
   end
 end
-
+# I think this method is O(n^2)
   def self.find_sum_2(array, sum = 0)
     if array.include?(sum)
       return true
@@ -32,6 +33,7 @@ end
     false
   end
 
+#I think this method is O(n^3)
   def self.find_sum_3(array)
    if array.include?(0)
       return true
