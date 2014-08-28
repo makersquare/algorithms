@@ -21,7 +21,9 @@ module ArrayUtil
   end
 
   def self.sum_arrays(array1, array2)
-    # array1.each_index do |x|
-    #   array1[x]
+    #This one might take some time because the each will have to run through every element of two arrays. 
+    sum = []
+    array1.each_index {|i| sum.push(array1[i] + array2[i]) }
+    sum
   end
 end
