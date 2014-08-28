@@ -1,7 +1,7 @@
 module Set1
   def self.swap_small(array)
     small = array[0]
-    ar2 = []
+    ar2 = [0]
     array[1..-1].each do |x|
       if x < small
         ar2.push(small)
@@ -10,7 +10,7 @@ module Set1
         ar2.push(x)
       end
     end
-    ar2.unshift(small)
+    ar2[0]=(small)
     ar2
   end
 
