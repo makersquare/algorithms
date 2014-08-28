@@ -17,3 +17,10 @@ def middle_element(array)
 		return array[length/2]
 	end
 end
+
+def sum_arrays(array1, array2)
+	arr = []
+	l = array1.length
+	0.upto(l-1) {|x| arr[x] = array1[x]+array2[x]}
+	return arr
+end
