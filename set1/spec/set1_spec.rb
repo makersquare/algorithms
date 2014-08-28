@@ -67,6 +67,7 @@ describe "Set1" do
 
     it "should return false if no 3 numbers in the array add to 0" do
       expect(Set1.find_sum_3([10, 51, 100, 201, 102, 5])).to eq(false)
+      expect(Set1.find_sum_3([10, 51, 100, 201, 102, 5, -1000])).to eq(false)
     end
   end
 end
