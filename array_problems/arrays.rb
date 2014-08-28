@@ -23,4 +23,10 @@ module ArrayUtil
     array1.each_index { |ind| summed_array[ind] = array1[ind] + array2[ind] }
     summed_array
   end
+
+  def self.sum_uneven_arrays(array1,array2)
+    adder_array, base_array = ( array1.length > array2.length ? [array2, array1] : [array1, array2] )
+    adder_array.each_index {|ind| base_array[ind] += adder_array[ind]}
+    base_array
+  end
 end
