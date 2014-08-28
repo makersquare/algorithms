@@ -6,6 +6,7 @@ require_relative '../set1.rb'
 describe "Set1" do
   describe ".swap_small" do
     it "should return the same array if there is 1 element" do
+      #binding.pry
       expect(Set1.swap_small([1])).to eq([1])
     end
 
