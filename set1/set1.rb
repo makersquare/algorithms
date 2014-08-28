@@ -27,7 +27,22 @@ module Set1
   end
 
   def self.find_sum_2(array, sum = 0)
+    result = []
+    if array.empty?
+      result << false
+    elsif array.include? 0
+      result << true
+    else
+      array.each do |x|
+        if array.include? (x * -1) 
+          result << true
+        else
+          result << false
+        end
+      end
+    end
     
+    result.include? true ? true :  false
   end
 
   def self.find_sum_3(array)
