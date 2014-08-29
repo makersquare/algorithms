@@ -3,17 +3,15 @@ module Set1
     if array.count == 1
       return array
     end
-    flag = false
     smallest_number = array[0]
     smallest_index = 0
     array.each_with_index do |value, index|
       if value < smallest_number
         smallest_number = value
         smallest_index = index
-        flag = true
       end
     end
-    if !flag
+    if smallest_number == array[0]
       return array
     end
     array.delete_at(smallest_index)
@@ -25,10 +23,50 @@ module Set1
   end
 
   def self.find_sum_2(array, sum = 0)
-
+    #Given an array of numbers, find out if there are two numbers in 
+    #the array that add up to 0 (just return true or false). You can use 
+    #the same number multiple times.
+    if array.count == 0
+      false
+    elsif array.include?(0)
+      true
+    elsif array[0] == 0
+      true
+    else  
+      flag = false
+      array.each do |x|
+        array.map do |y|
+          if x + y == sum
+            flag = true
+          end
+        end
+      end
+      flag
+    end
   end
 
   def self.find_sum_3(array)
+    if array.count == 0
+      false
+    elsif array.include?(0)
+      true
+    elsif array[0] == 0
+      true
+    else  
+      flag = false
+      array.each do |x|
+        array.map do |y|
+          array.map do |z|
+            sum = x + y + z
+            if sum == 0
+              flag = true
+          end
+        end
+      end
+      flag
+    end
+  end
+
   end
 end
 
