@@ -3,7 +3,8 @@ require 'pry-byebug'
 
 module ArrayUtil
   def self.max(array)
-    return nil if array.empty?
+    # return nil if array.empty? 
+    # unnecessary since array[0]=nil on an empty array
     max = array[0]
     array.each { |num| max = num if num > max}
     max

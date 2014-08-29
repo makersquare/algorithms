@@ -4,17 +4,22 @@ module Set1
   # after talking to Patrick: yes, the O(1) washes out
   def self.swap_small(array)
     return nil if array.empty?
-    min = array[0]
+    # min = array[0]
     store_index = 0
     array.each_index do |ind| 
-      if array[ind] < min
-        min = array[ind] 
-        store_index = ind
+      # if array[ind] < min
+        # min = array[ind] 
+        # store_index = ind
+      if array[index] < array[store_index]
+        store_index = index
+      # note after Patrick's talk: look, you don't need to remember the min number, only the min number's location
       end
     end
     array[0], array[store_index] = array[store_index], array[0]
     array
   end
+
+
 
   #O(n^2) - have to check each element against each other to find the sum
   def self.find_sum_2(array, sum = 0)
