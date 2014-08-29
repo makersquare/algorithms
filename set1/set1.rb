@@ -4,7 +4,7 @@ module Set1
 
     smallest = array[0]
     smallest_index = 0
-    first = array[0]
+    # first = array[0]
 
     # i = 0
     # while i < array.length
@@ -22,12 +22,15 @@ module Set1
       end
     end
 
-    array.insert(smallest_index, first)
-    array.delete_at(smallest_index + 1)
+    # array.insert(smallest_index, first)
+    # array.delete_at(smallest_index + 1)
 
-    array.shift
-    array.unshift(smallest)
+    # array.shift
+    # array.unshift(smallest)
     
+    array[smallest_index] = array[0]
+    array[0] = smallest
+
     array
     
   end
