@@ -35,7 +35,7 @@ module Set1
     else  
       flag = false
       array.each do |x|
-        array.map do |y|
+        array.each do |y|
           if x + y == sum
             flag = true
           end
@@ -55,18 +55,17 @@ module Set1
     else  
       flag = false
       array.each do |x|
-        array.map do |y|
-          array.map do |z|
+        array.each do |y|
+          array.each do |z|
             sum = x + y + z
             if sum == 0
               flag = true
+            end
           end
         end
+        return flag
       end
-      flag
     end
-  end
-
   end
 end
 
