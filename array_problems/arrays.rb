@@ -11,10 +11,12 @@ module ArrayUtil
 
   	array.each_with_index do |item, index| 
   		if (array[index] > x)
-  			x = array[index]
-  		end
+        x = array[index]
+      end
   	end
-		x
+
+    x
+
   end
 
 
@@ -25,12 +27,18 @@ module ArrayUtil
 
 
   def self.middle_element(array)
-  
-  	if array.length % 2 == 1
-  		return array[array.length]
-  	# else
-  	# 	return [array[z], array[(z+1)]]
-  	end
+
+    mid_index_neg_length = array.length / 2
+    mid_neg_value = array[mid_index_neg_length]
+
+    if array.empty?
+      nil
+    elsif array.length.odd?
+      mid_neg_value
+    else
+      (mid_neg_value + array[(mid_index_neg_length-1)]) / 2.0
+    end
+
   end
 
 
@@ -43,6 +51,15 @@ module ArrayUtil
 
 
   def self.sum_arrays(array1, array2)
+    
+    array3 = []
+
+    array1.each_with_index do |x,y|
+      array3 << (x + array2[y])
+    end
+
+    array3
 
   end
+
 end
