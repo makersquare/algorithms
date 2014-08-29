@@ -21,16 +21,15 @@ module ArrayUtil
   end
 
   def self.sum_arrays(array1, array2)
-    if array1.length == array2.length
-      sum = []
-      i = 0
-      while i < array1.length
-        sum << (array1[i] + array2[i])
-        i += 1
-      end
-      sum
-    else
-      puts "Arrays must be of equal length."
+    sum = []
+    # i = 0
+    # while i < array1.length
+    #   sum << (array1[i] + array2[i])
+    #   i += 1
+    # end
+    array1.each_index do |index|
+      sum << array1[index] + array2[index]
     end
+    sum
   end
 end
