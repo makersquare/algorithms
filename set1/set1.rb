@@ -15,24 +15,57 @@ module Set1
     end
   end
 
+  # def self.find_sum_2(array, sum = 0)
+  #   if array.length == 0 
+  #     return false
+  #   elsif array.include?(0)
+  #     return true
+  #   elsif array.each { |x| array.include?(x) && array.include?(-x) }
+  #     return true
+  #   else # Can not get this one to work!!!
+  #     array.each { |x| sum += x }
+  #     if sum.equ?(0)
+  #       return false
+  #     else 
+  #       return true
+  #     end
+  #   end
+  # end
+
   def self.find_sum_2(array, sum = 0)
-    if array.length == 0 
-      return false
-    elsif array.include?(0)
-      return true
-    elsif array.each { |x| array.include?(x) && array.include?(-x) }
-      return true
-    else # Can not get this one to work!!!
-      array.each { |x| sum += x }
-      if sum.equ?(0)
-        return false
-      else 
+    array.each do |elem1|
+      array.each do |elem2|
+        if elem1 + elem2 == sum
+          return true
+        end
+      end
+    end
+    false
+  end
+
+  def self.fin_sum_2(array, sum = 0)
+    hash = {}
+    array.each do |elem1|
+      hash[elem1] = true
+    end
+    array.each do |elem1|
+      if hash[sum - elem1]
         return true
       end
     end
+    false
   end
 
   def self.find_sum_3(array)
-  end 
-
+   array.each do |elem1|
+    array.each do |elem2|
+      array.each do |elem3|
+        if elem1 + elem2 + elem3 == 0
+        return true
+        end
+      end
+    end
+  end
+  false
+  end
 end
