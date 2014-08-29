@@ -1,5 +1,6 @@
 module Set1
   def self.swap_small(array) #darrell & Jimmy
+    #.each_index
     if array.count == 1
       return array
     end
@@ -37,7 +38,9 @@ module Set1
       array.each do |x|
         array.each do |y|
           if x + y == sum
-            flag = true
+            flag = true #inefficient because it will continue to run
+            #even after the conditions has been satisified until
+            #it hits the end
           end
         end
       end
@@ -63,10 +66,12 @@ module Set1
             end
           end
         end
-        flag
       end
+      flag
     end
   end
 end
-
+#WHILE WORKING THROUGH THESE TYPES OF PROBLEMS. Think about how 
+#we are thinking about them. Examine our own thought process
+#because we will be evaluated on that during interviews. 
 
