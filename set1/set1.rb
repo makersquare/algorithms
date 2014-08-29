@@ -6,13 +6,20 @@ module Set1
     smallest_index = 0
     first = array[0]
 
-    i = 0
-    while i < array.length
-      if array[i] < smallest 
-        smallest = array[i]
-        smallest_index = i
+    # i = 0
+    # while i < array.length
+    #   if array[i] < smallest 
+    #     smallest = array[i]
+    #     smallest_index = i
+    #   end
+    #   i += 1
+    # end
+
+    array.each_index do |index|
+      if array[index] < smallest
+        smallest = array[index]
+        smallest_index = index
       end
-      i += 1
     end
 
     array.insert(smallest_index, first)
