@@ -63,7 +63,7 @@ module Set1
             end
           end
         end
-        return flag
+        flag
       end
     end
   end
