@@ -36,35 +36,71 @@ module Set1
   end
 
   def self.find_sum_2(array, sum = 0)
-    result = []
-    if array.empty?
-      result << false
-    elsif array.include? 0
-      result << true
-    else
-      array.each do |x|
-        if array.include? (x * -1) 
-          result << true
-        else
-          result << false
-        end
+    # my solution
+    # result = []
+    # if array.empty?
+    #   result << false
+    # elsif array.include? 0
+    #   result << true
+    # else
+    #   array.each do |x|
+    #     if array.include? (x * -1) 
+    #       result << true
+    #     else
+    #       result << false
+    #     end
+    #   end
+    # end
+    
+    # result.include? true ? true :  false
+
+    # first solution
+    # array.each do |ele1|
+    #   array.each do |ele2|
+    #     if ele1 + ele2 == sum
+    #       return true #This will exit out of the method
+    #     end
+    #   end
+    # end
+    # false
+
+    hash = {}
+    array.each do |ele1|
+      hash[ele1] = true
+    end
+
+    array.each do |ele1|
+      if hash[sum - ele1]
+        return true
       end
     end
-    
-    result.include? true ? true :  false
+    false  
+
   end
 
   def self.find_sum_3(array)
-    result = []
-    if array.empty?
-      false
-    elsif array.include? 0
-      true
-    elsif array.any?{|x| x < 0}
-      true
-    else
-      false
+    # my solution 
+    #result = []
+    # if array.empty?
+    #   false
+    # elsif array.include? 0
+    #   true
+    # elsif array.any?{|x| x < 0}
+    #   true
+    # else
+    #   false
+    # end
+
+    array.each do |ele1|
+      array.each do |ele2|
+        array.each do |ele3|
+          if ele1 + ele2 + ele3 == 0
+            return true
+          end
+        end
+      end
     end
+    false
     
   end
 end
