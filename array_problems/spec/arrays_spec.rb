@@ -35,6 +35,7 @@ describe "ArrayUtil" do
       expect(ArrayUtil.max([-1, -5, -10, -2])).to eq(-1)
     end
   end
+end
 
   describe ".middle_element" do
     it "should return nil for an empty array" do
