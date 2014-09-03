@@ -21,14 +21,12 @@ class ComplexPredictor < Predictor
       tokenHash = Hash.new(0)
       books.each do |filename, tokens|
         tokens.each do |word|
-          if good_token?(word)
+          if word.length > 6 && good_token?(word) 
           tokenHash[word]+= 1
           end
         end
       end
-                 a= tokenHash.sort_by{|x,y| y}[-10..-1]
-                 a.map!{|x| x[0]}
-                 @data[category][:keys] = a
+       @data[category][:keys] = tokenHash.sort_by{|x,y| y}[-10..-1].map!{|x| x[0]}
     end
 
   end
@@ -39,24 +37,14 @@ class ComplexPredictor < Predictor
   #
   # Returns a category.
   def predict(tokens)
-    @decider = {
-      religion:0,
-      philosophy:0,
-      astronomy:0,
-      archeology:0
-    }
+    @decider = Hash.new(0)
       tokens.each do |word|
         @data.each do |key,val| 
-          # val.values[0]
-          # p key
-          # p val
-            if val.values[0].include?(word)
-              @decider[key]+=1
-            end
+          if val.values[0].include?(word)
+            @decider[key]+=1
+          end
         end
       end
-    # puts @data
-     # puts @decider
     return @decider.max_by{|x,y| y}[0]
   end
 end
