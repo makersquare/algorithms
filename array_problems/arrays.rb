@@ -3,7 +3,6 @@ require 'pry-byebug'
 
 module ArrayUtil
   def self.max(array)
-    return nil if array.empty?
     highest_number = array[0]
     array.each do |num|
       if highest_number < num
@@ -27,6 +26,21 @@ module ArrayUtil
     end
     middle_number
   end
+
+=begin
+    
+  Patrick's answer:
+
+  def self.middle_element(array)
+    return nil if array.empty?
+    midpoint = array.length /2
+    if array.length % 2 ==0
+      (array[midpoint] + array [midpoint -1]) / 2.0
+    else
+      array[midpoint]
+    end
+    
+=end
 
   def self.sum_arrays(array1, array2)
     new_array = []
