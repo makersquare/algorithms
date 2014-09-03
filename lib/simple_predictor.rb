@@ -18,6 +18,7 @@ class SimplePredictor < Predictor
     #   philosophy: {
     #     words: 1000,
     #     books: 10,
+        ###add good tokens
     #   },
     #   archeology: {
     #     words: 2000,
