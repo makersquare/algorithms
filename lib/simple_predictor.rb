@@ -25,7 +25,6 @@ class SimplePredictor < Predictor
     #   }
     # }
     @data = {}
-
     @all_books.each do |category, books|
       @data[category] = {
         words: 0,
