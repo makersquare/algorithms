@@ -1,5 +1,6 @@
 require_relative 'lib/simple_predictor'
 require_relative 'lib/complex_predictor'
+require_relative  'spec/spec_helper.rb'
 
 def run!(predictor_klass, opts={})
   puts "+----------------------------------------------------+"
@@ -15,7 +16,7 @@ def run!(predictor_klass, opts={})
   start_time = Time.now
   predictor.train!
   puts "Training took #{Time.now - start_time} seconds."
-
+  
   puts "Predicting..."
   start_time = Time.now
   accuracy = predictor.predict_test_set(opts)
