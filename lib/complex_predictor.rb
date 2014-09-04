@@ -17,12 +17,13 @@ class ComplexPredictor < Predictor
       books.each do |filename, tokens|
         @data[category][:words] += tokens.count
         @data[category][:books] += 1
-        cutoff_val = good_token_count(tokens).values.sort[-10]
-        @data[category][:top_words] = @good_token_count.select{|k,v| v>= cutoff_val}
+        cutoff_val = good_token_count(tokens).values.sort[-40]
+        cutoff_words = @good_token_count.select{|k,v| v>= cutoff_val}
+        cutoff_words.each do |x|
+          @data[category][:top_words] << x
+        end
       end
     end
-
-
   end
 
   def good_token_count(tokens)
@@ -49,7 +50,31 @@ class ComplexPredictor < Predictor
   # Returns a category.
   def predict(tokens)
     # Always predict astronomy, for now.
-    :astronomy
+    # :astronomy
+    token_count = tokens.count
+    predict_common_words = []
+
+    cutoff_val = good_token_count(tokens).values.sort[-50]
+    cutoff_words = @good_token_count.select{|k,v| v>= cutoff_val}
+    cutoff_words.each do |x|
+      predict_common_words << x
+    end
+
+    predicted_category = :astronomy
+    counter = 0
+
+    @data.each do |category, cat_data|
+      matching_words = (predict_common_words & cat_data[:top_words])
+      max_matches = matching_words.size
+
+      if max_matches > counter
+        counter = max_matches
+        predicted_category = category.to_sym
+      end
+    end
+
+    predicted_category
+
   end
 end
 
