@@ -35,10 +35,10 @@ class ComplexPredictor < Predictor
     @top_words = []
 
     tokens.each do |t|
-      if @good_token_count[t] == nil
-        @good_token_count[t] = 1
-      else
+      if @good_token_count[t] 
         @good_token_count[t] += 1
+      else
+        @good_token_count[t] = 1
       end
     end
 
@@ -83,8 +83,7 @@ class ComplexPredictor < Predictor
 
       if max_matches > counter
         counter = max_matches
-        predicted_category = category
-          
+        predicted_category = category 
       end
     end
 
