@@ -17,20 +17,16 @@ class ComplexPredictor < Predictor
       books.each do |filename, tokens|
         @data[category][:words] += tokens.count
         @data[category][:books] += 1
-        cutoff_val = good_token_count(tokens).values.sort[-40]
-        cutoff_words = @good_token_count.select{|k,v| v>= cutoff_val}
-        cutoff_words.each do |x|
+        good_token_count(tokens, 40).each do |x|
           @data[category][:top_words] << x
         end
       end
     end
   end
 
-  def good_token_count(tokens)
-    @good_token_count = {
-      #token1: 70,
-      #token2: 50
-    }
+  def good_token_count(tokens, num=50)
+    @good_token_count = {}
+    @top_words = []
 
     tokens.each do |t|
       if good_token?(t) && @good_token_count[t] == nil
@@ -40,7 +36,13 @@ class ComplexPredictor < Predictor
       end
     end
 
-    @good_token_count
+    cutoff_val = @good_token_count.values.sort[-1 * num]
+    cutoff_words = @good_token_count.select{|k,v| v>= cutoff_val}
+    cutoff_words.each do |x|
+      @top_words << x
+    end
+
+    @top_words
   end
 
   # Public: Predicts category.
@@ -54,9 +56,7 @@ class ComplexPredictor < Predictor
     token_count = tokens.count
     predict_common_words = []
 
-    cutoff_val = good_token_count(tokens).values.sort[-50]
-    cutoff_words = @good_token_count.select{|k,v| v>= cutoff_val}
-    cutoff_words.each do |x|
+    good_token_count(tokens).each do |x|
       predict_common_words << x
     end
 
