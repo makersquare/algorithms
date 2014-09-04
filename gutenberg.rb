@@ -16,13 +16,12 @@ def run!(predictor_klass, opts={})
   predictor.train!
   puts "Training took #{Time.now - start_time} seconds."
 
-  puts "Predicting..."
   start_time = Time.now
   accuracy = predictor.predict_test_set(opts)
   puts "Predictions took #{Time.now - start_time} seconds."
   puts "Accuracy: #{accuracy}"
 end
 
-run!(SimplePredictor)
+# run!(SimplePredictor)
 run!(ComplexPredictor, debug: true)
 
