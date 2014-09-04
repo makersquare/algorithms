@@ -8,18 +8,17 @@ class ComplexPredictor < Predictor
   # Returns nothing.
   def train!
     @data = {}
-    # binding.pry
     @all_books.each do |category, books|
       @data[category] = Hash.new(0)
       tokenHash = Hash.new(0)
       books.each do |filename, tokens|
         tokens.each do |word|
-          if word.length > 6 && good_token?(word) 
+          if word.length > 4 && good_token?(word) 
           tokenHash[word]+= 1
           end
         end
       end
-       @data[category][:keys] = tokenHash.sort_by{|x,y| y}[-8..-1].map!{|x| x[0]}
+       @data[category][:keys] = tokenHash.sort_by{|x,y| y}[-3..-1].map!{|x| x[0]}
     end
   end
 
@@ -37,6 +36,7 @@ class ComplexPredictor < Predictor
         end
       end
     end
+    p @data
     return @decider.max_by{|x,y| y}[0]
   end
 end
