@@ -22,7 +22,6 @@ class ComplexPredictor < Predictor
   # tokens - A list of tokens (words).
   
   # Returns a category.
-  @data
   end
 
   # Public: Predicts category.
@@ -37,20 +36,23 @@ class ComplexPredictor < Predictor
     # # Philosophy book has 100 words. Then say we must predict some book with 120
     # # words. In this case, we will predict Philosophy, since 120 is closer to 100
     # # than it is to 50.
-    counter2 = 0
     max_occurrences = 0
     the_category = nil
     counter = Hash.new
 
+    @all_books.each do |cat, books|
       @data.each do |category, word|
+        books.each do |filename, tokens|
           counter[category] = 0
           tokens.each {|token| counter[category] += 1 if token == word}
           if max_occurrences < counter[category]
             max_occurrences = counter[category]
             the_category = category
           end
+        end
       end
-    counter2 += 1
+    end
+
     the_category
     # # raise "You must implement Predictor#predict."
   end
