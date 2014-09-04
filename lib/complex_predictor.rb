@@ -14,31 +14,33 @@ attr_accessor :data
       @data[category] = {
         words: 0,
         books: 0,
-        top_words: [] #top 10 words
+        top_words: [] 
       }
       books.each do |filename, tokens|
         @data[category][:words] += tokens.count
         @data[category][:books] += 1
-          cutoff_val = good_token_count(tokens).values.sort[-50]
-        cutoff_words = @good_token_count.select {|k,v| v >= cutoff_val}
-        cutoff_words.each do |x|
-        @data[category][:top_words].push(x)
-      end
+        good_token_count(tokens).each { |x| @data[category][:top_words].push(x) }
       end
     end
   end
 
   def good_token_count(tokens)
     @good_token_count = {}
+    @top_words = []
     tokens.each do |t|
       if good_token?(t) && @good_token_count[t] == nil
           @good_token_count[t] = 1
       elsif good_token?(t) && @good_token_count[t]
           @good_token_count[t] += 1
       end
+    end
+    cutoff_val = @good_token_count.values.sort[-50]
+    top_words = @good_token_count.select {|k,v| v >= cutoff_val}
+    top_words.each {|x| @top_words.push(x)}  
+    @top_words
   end      
-  @good_token_count
-  end
+    
+
 
   # Public: Predicts category.
   #
@@ -51,10 +53,7 @@ attr_accessor :data
     predicted_category = nil
     counter = 0
 
-    predictee_top_words = []
-    cutoff_val = good_token_count(tokens).values.sort[-50]
-    top_words = @good_token_count.select {|k,v| v >= cutoff_val}
-    top_words.each {|x| predictee_top_words.push(x)}
+    predictee_top_words = good_token_count(tokens)
 
     @data.each do |category, cat_data|
     matching_words = (predictee_top_words & cat_data[:top_words])
@@ -64,7 +63,6 @@ attr_accessor :data
           predicted_category = category
       end
     end
-  
     predicted_category
     end
     
