@@ -61,23 +61,15 @@ class ComplexPredictor < Predictor
   def predict(tokens)
     book_histogram = build_histogram(tokens)
     top_words_for_book = find_top_words(book_histogram, 300)
-    decide_category(top_words_for_book, @data, 50)
+    decide_category(top_words_for_book, @data)
   end
 
-  def decide_category(top_words, training_data, precision)
-      count_hash = { 
-        archeology: 0,
-        philosophy: 0,
-        astronomy: 0,
-        religion: 0 ,
-      }
-
-
-
+  def decide_category(top_words, training_data)
+    count_hash = Hash.new(0)
     training_data.each do |category, pop_words|
       top_words.each_key do |word|
         if pop_words.has_key?(word)
-          count_hash[category] += 1
+          count_hash[category] = count_hash[category] + 1
         end
       end
     end
