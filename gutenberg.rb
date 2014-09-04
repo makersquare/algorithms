@@ -25,4 +25,3 @@ end
 
 run!(SimplePredictor)
 run!(ComplexPredictor, debug: true)
-
