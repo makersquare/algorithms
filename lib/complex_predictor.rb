@@ -73,15 +73,19 @@ class ComplexPredictor < Predictor
 
      max_count = 0
      return_cat = ""
+     cats = data_predict.keys
      data_predict.each do |cat, count|
       if count > max_count
         max_count = count
         return_cat = cat
       end
      end
-  
-     return_cat
 
+    if return_cat == ""
+      return_cat = cats.sample
+    end
+
+    return_cat
 
   end
    
