@@ -20,6 +20,7 @@ attr_accessor :data
         @data[category][:words] += tokens.count
         @data[category][:books] += 1
         good_token_count(tokens).each { |x| @data[category][:top_words].push(x) }
+        tokens.each
       end
     end
   end
@@ -39,7 +40,16 @@ attr_accessor :data
     top_words.each {|x| @top_words.push(x)}  
     @top_words
   end      
-    
+
+  def find_title(tokens)
+  title_start = tokens.index("title") 
+  title_end = tokens.index("author")
+  title = tokens[title_start .. title_end]
+  title.pop
+  title.delete("title")
+  title 
+  end   
+ 
 
 
   # Public: Predicts category.
@@ -54,6 +64,7 @@ attr_accessor :data
     counter = 0
 
     predictee_top_words = good_token_count(tokens)
+    title_test = find_title(tokens)
 
     @data.each do |category, cat_data|
     matching_words = (predictee_top_words & cat_data[:top_words])
@@ -62,7 +73,10 @@ attr_accessor :data
           counter = max_matches
           predicted_category = category
       end
-    end
+        if title_test.include?(category.to_s)
+        predicted_category = category
+    end 
+    end    
     predicted_category
     end
     
