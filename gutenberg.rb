@@ -1,5 +1,6 @@
 require_relative 'lib/simple_predictor'
 require_relative 'lib/complex_predictor'
+require_relative 'lib/complex_predictor2'
 
 def run!(predictor_klass, opts={})
   puts "+----------------------------------------------------+"
@@ -25,4 +26,4 @@ end
 
 #run!(SimplePredictor)
 run!(ComplexPredictor, debug: true)
-
+run!(ComplexPredictor2, debug: true)

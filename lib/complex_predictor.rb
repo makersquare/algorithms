@@ -8,7 +8,7 @@ class ComplexPredictor < Predictor
 
     @all_books.each do |category, books|
       @data[category] = {
-        common_words: Set.new,
+        common_words: Set.new
       }
 
       books.each do |_, tokens|
@@ -43,6 +43,8 @@ class ComplexPredictor < Predictor
     book_histogram = build_histogram(book_tokens)
     book_commons = common_words(book_histogram)
  
+    # instead of points, just use & to union the two sets 
+
     max_count = 0
     probably_category = nil
     
