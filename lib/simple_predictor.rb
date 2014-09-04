@@ -25,14 +25,13 @@ class SimplePredictor < Predictor
     #   }
     # }
     @data = {}
-
     @all_books.each do |category, books|
       @data[category] = {
         words: 0,
         books: 0
       }
       books.each do |filename, tokens|
-        @data[category][:words] += tokens.count
+        @data[category][:words] += tokens.length
         @data[category][:books] += 1
       end
     end
@@ -53,7 +52,6 @@ class SimplePredictor < Predictor
 
     minimum_category = nil
     minimum_distance = 999999999999
-
     @data.each do |category, counts|
       average_words_per_book = counts[:words].to_f / counts[:books]
       difference = (tokens.count - average_words_per_book).abs
