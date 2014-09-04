@@ -12,13 +12,18 @@ class ComplexPredictor < Predictor
       @data[category] = {
         words: 0,
         books: 0,
-        top_words: [],
-        title_words: []
+        top_words: []
       }
       books.each do |filename, tokens|
         @data[category][:words] += tokens.count
         @data[category][:books] += 1
         good_token_count(tokens, 40).each do |x|
+          @data[category][:top_words] << x
+        end
+        title_start = tokens.index("title")+1
+        title_end = tokens.index("author")-1
+        title_words = tokens[title_start..title_end]
+        title_words.each do |x|
           @data[category][:top_words] << x
         end
       end
@@ -62,6 +67,9 @@ class ComplexPredictor < Predictor
     title_start = tokens.index("title")+1
     title_end = tokens.index("author")-1
     title_words = tokens[title_start..title_end]
+    title_words.each do |x|
+      predict_common_words << x
+    end
 
     predicted_category = :astronomy
     counter = 0
