@@ -7,18 +7,6 @@ class ComplexPredictor < Predictor
   #
   # Returns nothing.
   def train!
-    # @data looks like:
-    #
-    # {
-    #   philosophy: {
-    #     word1 => count,
-    #     top_words => [list, of, top, words, here]
-    #   },
-    #   archeology: {
-    #     words: 2000,
-    #     books: 5,
-    #   }
-    # }
     @data = {}
 
     @all_books.each do |category, books|
@@ -32,11 +20,7 @@ class ComplexPredictor < Predictor
       end
       sorted = sort_words(@data, category)
       top_words = get_top_words(sorted)
-      top_words_hash = {}
-      top_words.each do |word|
-        top_words_hash[word] = nil
-      end
-      @data[category][:top_words] = top_words_hash
+      @data[category][:top_words] = top_words
     end
   end
 
@@ -45,7 +29,7 @@ class ComplexPredictor < Predictor
   end
 
   def get_top_words(sorted)
-    top = sorted.take(200)
+    top = sorted.take(900)
     top.map! { |word, count| word }
   end
 
@@ -55,15 +39,10 @@ class ComplexPredictor < Predictor
   #
   # Returns a category.
   def predict(tokens)
-    # Always predict astronomy, for now.
     counts = Hash.new(0)
     @data.each do |category, _|
-      tokens.each do |word|
-        if @data[category][:top_words].include?(word)
-          counts[category] += 1
-        end
-      end
+      counts[category] = (tokens & @data[category][:top_words]).length
     end
-    counts.sort_by { |k,v| v }.last.first
+    counts.max_by { |k,v| v }.first
   end
 end
