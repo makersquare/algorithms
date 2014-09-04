@@ -17,7 +17,7 @@ class ComplexPredictor < Predictor
       books.each do |filename, tokens|
         @data[category][:words] += tokens.count
         @data[category][:books] += 1
-        good_token_count(tokens, 40).each do |x|
+        good_token_count(tokens).each do |x|
           @data[category][:top_words] << x
         end
         title_start = tokens.index("title")+1
@@ -30,14 +30,14 @@ class ComplexPredictor < Predictor
     end
   end
 
-  def good_token_count(tokens, num=50)
+  def good_token_count(tokens, num=20)
     @good_token_count = {}
     @top_words = []
 
     tokens.each do |t|
-      if good_token?(t) && @good_token_count[t] == nil
+      if @good_token_count[t] == nil
         @good_token_count[t] = 1
-      elsif good_token?(t) && @good_token_count[t]
+      else
         @good_token_count[t] += 1
       end
     end
@@ -71,19 +71,20 @@ class ComplexPredictor < Predictor
       predict_common_words << x
     end
 
-    predicted_category = :astronomy
+    predicted_category = nil
     counter = 0
 
     @data.each do |category, cat_data|
       if title_words.include?(category.to_s)
-        return category.to_sym
+        return category
       end
       matching_words = (predict_common_words & cat_data[:top_words])
       max_matches = matching_words.size
 
       if max_matches > counter
         counter = max_matches
-        predicted_category = category.to_sym
+        predicted_category = category
+          
       end
     end
 
