@@ -24,7 +24,7 @@ class ComplexPredictor < Predictor
         end
         @subjects.push([filename.split("/")[2]])
         @points[category]=0
-        words_freq = @words.sort_by{|key, value| value}[-100..-1]
+        words_freq = @words.sort_by{|key, value| value}[-2000..-1]
         words_only = words_freq.map{|pair| pair[0]}
         @data[category] = words_only
       end
@@ -67,11 +67,15 @@ class ComplexPredictor < Predictor
         @points[category] += 1
         @minimum_distance = difference_count
       end
-      @subjects.each{|subject| if tokens[0..5000].include?(subject) then @points[category]+=1 end}
+      #binding.pry 
+      #this seemed like a neat idea but does not impact anything
+      # @subjects.each do |subject| 
+      #    if only_words.include?(subject) 
+      #      @points[category]+=1 end
 
+      #    end
     end
     # binding.pry
-    p "stop"
     #iterate through points to get the highest value and pass the key **********
     cat = @points.sort_by{|k,v| v}[-1][0]
     cat
