@@ -39,8 +39,6 @@ class ComplexPredictor < Predictor
         end
       end
     end
-    p @data
-    # binding.pry unless @decider.max_by{|x,y| y}
     return @decider.max_by{|x,y| y}[0]
   end
 end
