@@ -23,6 +23,6 @@ def run!(predictor_klass, opts={})
   puts "Accuracy: #{accuracy}"
 end
 
-run!(SimplePredictor)
+# run!(SimplePredictor)
 run!(ComplexPredictor, debug: true)
 
