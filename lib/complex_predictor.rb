@@ -23,8 +23,6 @@ class ComplexPredictor < Predictor
         @data[category] = words_only
       end
     end
-    binding.pry 
-    puts "stop"
 #create a hash with the word frequency for each one
 #check to see how many top 20 words match. just like the min one, the closest match or the one with the most
 #similar terms gets selected
@@ -37,8 +35,8 @@ class ComplexPredictor < Predictor
   #
   # Returns a category.
   def predict(tokens)
-    minimum_category = nil
-    minimum_difference = 999999999
+    @minimum_category = nil
+    @minimum_distance = 999999999
     @token_words = Hash.new(0)
     tokens.each do |token|
       if token.length > 6
@@ -49,13 +47,18 @@ class ComplexPredictor < Predictor
     only_words = sorted_token_words.map{|pair| pair[0]}
     @difference = nil
     @data.each do |category, word_list| 
-      
-    end
-        minimum_category = category
-        minimum_distance = difference
+      @difference = @data[category] - only_words
+      difference_count = @difference.count 
+      if difference_count < @minimum_distance
+        @minimum_category = category
+        @minimum_distance = difference_count
+        #binding.pry
       end
+    end
+    @minimum_category
+  end
+end
 
-    binding.pry
     #compare sorted_token_words to each @data[:category] hash to see how many words match
     #calculate matching words or missing words number and store that as minimum difference
     #store the subject as minimum subject
@@ -63,7 +66,3 @@ class ComplexPredictor < Predictor
     #return the minimum subject
     #
     # Always predict astronomy, for now.
-    :astronomy
-  end
-end
-
