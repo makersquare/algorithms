@@ -19,6 +19,28 @@ module Sort
       return array
     end
     go = true
+    unsorted = array.dup
+    while go
+      for i in 0...(array.length-1)
+        if array[i] > array[i+1]
+          minimum = array[i+1]
+          array[i+1] = array[i]
+          array[i] = minimum
+        end
+      end
+      if array == unsorted
+        go = false
+      end
+      unsorted = array.dup
+    end
+    array
+  end
+
+  def self.bubble_sort2(array)
+    if array.empty?
+      return array
+    end
+    go = true
     while go
       for i in 0...(array.length-1)
         if array[i] > array[i+1]
@@ -39,4 +61,5 @@ module Sort
     end
     array
   end
+
 end
