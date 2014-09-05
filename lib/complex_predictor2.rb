@@ -37,6 +37,7 @@ class ComplexPredictor2 < Predictor
       @data[category][:tf_words].each do |key,val|
         @data[category][:tf_idf_score][key] = val * @idf[key]
       end
+      # @data[category][:tf_idf_score] = Hash[@data[category][:tf_idf_score].sort_by {|key,val| val}.reverse]
     end
 
   end
@@ -58,20 +59,15 @@ class ComplexPredictor2 < Predictor
   end
 
   def predict(tokens)
-    book_tokens = good_tokens(tokens)
-    book_hash = Hash.new(0)
-    build_histogram(book_hash, book_tokens)
-
     max_count = 0
     probably_category = nil
-    
+    tokens = good_tokens(tokens)
+
     @data.each do |category, _|
       point_counter = 0
-      book_hash.each do |word,count|
-        if @data[category][:tf_idf_score][word]
-          point_counter += count * @data[category][:tf_idf_score][word]
-        else
-          point_counter += count * 0
+      tokens[0..649].each do |word|
+        if @data[category][:tf_idf_score].has_key?(word)
+          point_counter += @data[category][:tf_idf_score][word]
         end
       end
       if point_counter > max_count
@@ -81,4 +77,33 @@ class ComplexPredictor2 < Predictor
     end
     probably_category
   end
+
+  #   book_tokens = good_tokens(tokens)
+  #   book_hash = Hash.new(0)
+  #   build_histogram(book_hash, book_tokens)
+  #   book_hash = Hash[book_hash.sort_by {|key,val| val}.reverse].keys.take(25)
+
+  #   max_count = 0
+  #   probably_category = nil
+    
+  #   @data.each do |category, _|
+  #     point_counter = 0
+  #     book_hash.each do |word|
+  #       if @data[category][:tf_idf_score].has_key?(word)
+  #         point_counter += @data[category][:tf_idf_score][word]
+  #       end
+  #     # book_hash.each do |word,count|
+  #     #   if @data[category][:tf_idf_score][word]
+  #     #     point_counter += count * @data[category][:tf_idf_score][word]
+  #     #   else
+  #     #     point_counter += count * 0
+  #     #   end
+  #     end
+  #     if point_counter > max_count
+  #       max_count = point_counter
+  #       probably_category = category
+  #     end
+  #   end
+  #   probably_category
+  # end
 end
