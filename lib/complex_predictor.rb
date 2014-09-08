@@ -12,13 +12,13 @@ class ComplexPredictor < Predictor
       @data[category] = Hash.new(0)
       tokenHash = Hash.new(0)
       books.each do |filename, tokens|
-        tokens.each do |word|
+        tokens[2000..-tokens.count/2].each do |word|
           if word.length > 4 && good_token?(word) 
           tokenHash[word]+= 1
           end
         end
       end
-       @data[category][:keys] = tokenHash.sort_by{|x,y| y}[-7..-1].map!{|x| x[0]}
+       @data[category][:keys] = tokenHash.sort_by{|x,y| y}[-3..-1].map!{|x| x[0]} 
     end
   end
 
@@ -30,8 +30,8 @@ class ComplexPredictor < Predictor
   def predict(tokens)
     newarray = tokens[0..18000]
     @decider = Hash.new(0)
-    newarray.each do |word|
-      if good_token?(word)
+    tokens[2500..10000].each do |word|
+      if word.length > 4 && good_token?(word)
         @data.each do |key,val| 
           if val.values[0].include?(word)
             @decider[key]+=1

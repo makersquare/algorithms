@@ -42,7 +42,7 @@ class Predictor
   # Returns true if you should use this token. In our project, "token" is
   # synonymous with "word".
   def good_token?(token)
-    !STOP_WORDS.include?(token) && token.size > 2
+    token.size > 4 && !STOP_WORDS.include?(token)
   end
 
   #############################################################################
