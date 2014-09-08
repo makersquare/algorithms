@@ -24,5 +24,6 @@ def run!(predictor_klass, opts={})
 end
 
 run!(SimplePredictor)
+
 run!(ComplexPredictor, debug: true)
 
