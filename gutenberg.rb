@@ -15,7 +15,7 @@ def run!(predictor_klass, opts={})
   start_time = Time.now
   predictor.train!
   puts "Training took #{Time.now - start_time} seconds."
-
+  
   puts "Predicting..."
   start_time = Time.now
   accuracy = predictor.predict_test_set(opts)
