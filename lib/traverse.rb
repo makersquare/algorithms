@@ -11,19 +11,23 @@ end
 
 class Traverse
 
+  def self.capture(data)
+    puts "Captured: #{data}"
+  end
+
   def self.root_only(tree)
-    yield tree.data
+    capture(tree.data)
   end
 
-  def self.with_preorder(node, &block)
+  def self.with_preorder(node)
     # TODO
   end
 
-  def self.with_inorder(node, &block)
+  def self.with_inorder(node)
     # TODO
   end
 
-  def self.with_postorder(node, &block)
+  def self.with_postorder(node)
     # TODO
   end
 

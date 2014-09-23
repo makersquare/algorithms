@@ -21,51 +21,34 @@ describe Traverse do
     )
   end
 
+  let(:captured_results) { [] }
+
+  before do
+    expect(Traverse).to receive(:capture).at_least(:once) {|data| captured_results.push(data) }
+  end
+
   it "visits the root node" do
-    root_data = nil
-    Traverse.root_only(sample_tree) do |data|
-      root_data = data
-    end
-    expect(root_data).to eq 'F'
+    Traverse.root_only(sample_tree)
+    expect(captured_results).to eq ['F']
   end
 
   it "traverses with pre-order" do
-    visits = []
-    Traverse.with_preorder(sample_tree) do |data|
-      visits << data
-    end
-
-    expect(visits.count).to eq 9
-    expect(visits).to eq %w{F B A D C E G I H}
+    Traverse.with_preorder(sample_tree)
+    expect(captured_results).to eq %w{F B A D C E G I H}
   end
 
   it "traverses with in-order" do
-    visits = []
-    Traverse.with_inorder(sample_tree) do |data|
-      visits << data
-    end
-
-    expect(visits.count).to eq 9
-    expect(visits).to eq %w{A B C D E F G H I}
+    Traverse.with_inorder(sample_tree)
+    expect(captured_results).to eq %w{A B C D E F G H I}
   end
 
   it "traverses with post-order" do
-    visits = []
-    Traverse.with_postorder(sample_tree) do |data|
-      visits << data
-    end
-
-    expect(visits.count).to eq 9
-    expect(visits).to eq %w{A C E D B H I G F}
+    Traverse.with_postorder(sample_tree)
+    expect(captured_results).to eq %w{A C E D B H I G F}
   end
 
   it "traverses with level-order", :pending => "Extension!" do
-    visits = []
-    Traverse.with_levelorder(sample_tree) do |data|
-      visits << data
-    end
-
-    expect(visits.count).to eq 9
-    expect(visits).to eq %w{F B G A D I C E H}
+    Traverse.with_levelorder(sample_tree)
+    expect(captured_results).to eq %w{F B G A D I C E H}
   end
 end
