@@ -30,7 +30,9 @@ class Traverse
   end
 
   def self.with_postorder(node)
-    # TODO
+    with_postorder(node.left_child)  if node.left_child
+    with_postorder(node.right_child) if node.right_child
+    capture(node.data)
   end
 
   def self.with_levelorder(node)
