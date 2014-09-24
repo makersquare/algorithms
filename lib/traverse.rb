@@ -20,13 +20,15 @@ class Traverse
   end
 
   def self.with_preorder(node)
-    # TODO
+    capture(node.data)
+    with_preorder(node.left_child) if node.left_child
+    with_preorder(node.right_child)  if node.right_child
   end
 
   def self.with_inorder(node)
-    with_inorder(node.left_child)
+    with_inorder(node.left_child)  if node.left_child
     capture(node.data)
-    with_inorder(node.right_child)
+    with_inorder(node.right_child) if node.right_child
   end
 
   def self.with_postorder(node)
