@@ -24,7 +24,9 @@ class Traverse
   end
 
   def self.with_inorder(node)
-    # TODO
+    with_inorder(node.left_child)
+    capture(node.data)
+    with_inorder(node.right_child)
   end
 
   def self.with_postorder(node)
