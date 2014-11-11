@@ -1,6 +1,17 @@
 // Defines the node object
 var Node = function(options) {
 
+  // Find the child that matches the given value
+  //
+  // Returns Node
+  this.getChild = function(value) {
+    // return a child node where it's value == value
+  };
+
+  // Adds a child node with the given value
+  this.add = function(value) {
+
+  };
 };
 
 var Trie = function() {

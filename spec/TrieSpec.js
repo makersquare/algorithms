@@ -36,10 +36,10 @@ describe("Trie", function () {
     describe("iterate", function () {
       it("should include correct strings", function () {
         expect(trie.iterate()).toEqual([]);
-        expect(trie.iterate(trie.head.children["d"].children["o"].children["g"]).sort()).toEqual(["g"]);
-        expect(trie.iterate(trie.head.children["d"].children["o"]).sort()).toEqual(["og", "ot", "o"].sort());
-        expect(trie.iterate(trie.head.children["d"]).sort()).toEqual(["dog", "dot", "do", "dad"].sort());
-        expect(trie.iterate(trie.head.children["b"]).sort()).toEqual(["bird"].sort());
+        expect(trie.iterate(trie.head.getChild("d").getChild("o").getChild("g")).sort()).toEqual(["g"]);
+        expect(trie.iterate(trie.head.getChild("d").getChild("o")).sort()).toEqual(["og", "ot", "o"].sort());
+        expect(trie.iterate(trie.head.getChild("d")).sort()).toEqual(["dog", "dot", "do", "dad"].sort());
+        expect(trie.iterate(trie.head.getChild("b")).sort()).toEqual(["bird"].sort());
         expect(trie.iterate(trie.head).sort()).toEqual(["dog", "dot", "do", "dad", "bird"].sort());
       });
     });
@@ -48,9 +48,9 @@ describe("Trie", function () {
       it("should find last node", function () {
         expect(trie.findLastNode()).toEqual(trie.head);
         expect(trie.findLastNode("")).toEqual(trie.head);
-        expect(trie.findLastNode("d")).toEqual(trie.head.children["d"]);
-        expect(trie.findLastNode("do")).toEqual(trie.head.children["d"].children["o"]);
-        expect(trie.findLastNode("dog")).toEqual(trie.head.children["d"].children["o"].children["g"]);
+        expect(trie.findLastNode("d")).toEqual(trie.head.getChild("d"));
+        expect(trie.findLastNode("do")).toEqual(trie.head.getChild("d").getChild("o"));
+        expect(trie.findLastNode("dog")).toEqual(trie.head.getChild("d").getChild("o").getChild("g"));
         expect(trie.findLastNode("dogs")).toBeNull();
         expect(trie.findLastNode("xyz")).toBeNull();
       });
