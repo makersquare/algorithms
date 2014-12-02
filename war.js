@@ -37,7 +37,7 @@ var countTotalMovesInWar = function() {
   initializeDeck();
   shuffleCards();
   passOutCards();
-  while(player1.deck.size > 0 && player2.deck.size > 0) {
+  while(player1.deck.length > 0 && player2.deck.length > 0) {
     playOneRound();
   }
   declareWinner();
