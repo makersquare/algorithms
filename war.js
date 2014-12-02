@@ -1,47 +1,58 @@
-console.log("hi");
+// Write tests before your code
+module.exports = (function() {
+  var ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A'];
+  var suits = ["Spades", "Clubs", "Hearts", "Diamonds"];
+  
+  var War = function() {
+    this.deck = [];
 
-// Data Structures declared here
-var deck = [];
-var moveCount = 0;
+    this.player1 = {
+      deck: []
+    };
 
-var player1 = {
-  deck: []
-};
+    this.player2 = {
+      deck: []
+    };
+  };
 
-var player2 = {
-  deck: []
-};
+  War.prototype.initializeDeck = function() {
+    for (var i = 0; i < suits.length; i++) {
+      for (var j = 0; j < ranks.length; j++) {
+        this.deck.push({
+          rank: ranks[j],
+          suit: suits[i]
+        });
+      }
+    }
+  };
 
-var initializeDeck = function() {
-  console.log("Fill deck with 52 cards (each card is an object that has a rank and suit). Clear the players' decks.");
-};
+  War.prototype.passOutCards = function() {
+    while (this.deck.length > 0) {
+      this.player1.deck.push(this.deck.shift());
+      this.player2.deck.push(this.deck.shift());
+    }
+  };
 
-var shuffleCards = function() {
-  console.log("Shuffle the deck of cards");
-};
+  War.prototype.playOneRound = function() {
+    var card1 = this.player1.deck.shift();
+    var card2 = this.player2.deck.shift();
+    if (ranks.indexOf(card1.rank) > ranks.indexOf(card2.rank)) {
+      this.player1.deck.push(card1);
+      this.player1.deck.push(card2);
+    } else if (ranks.indexOf(card1.rank) < ranks.indexOf(card2.rank)) {
+      this.player2.deck.push(card2);
+      this.player2.deck.push(card1);
+    } else {
+      this.player1.deck.push(card1);
+      this.player1.deck.push(card2);
+    }
+  };
 
-var passOutCards = function() {
-  console.log("Pass out the deck of cards to the 2 players");
-};
-
-var playOneRound = function() {
-  console.log("Play 1 round of war where each player takes out a card to battle!");
-};
-
-var declareWinner = function() {
-  console.log("Print out who the winner of the game is and how many moves it took to win.");
-};
-
-// Main function that controls everything
-var countTotalMovesInWar = function() {
-  initializeDeck();
-  shuffleCards();
-  passOutCards();
-  while(player1.deck.size > 0 && player2.deck.size > 0) {
-    playOneRound();
-  }
-  declareWinner();
-};
-
-// Execute main function
-countTotalMovesInWar();
+  War.prototype.playGame = function() {
+    while(this.player1.deck.length > 0 && this.player2.deck.length > 0) {
+      this.playOneRound();
+    }
+  };
+  
+  return War;
+})();
