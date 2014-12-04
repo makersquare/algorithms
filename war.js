@@ -1,18 +1,23 @@
-// Write tests before your code
+var LinkedList = require("./linkedList");
+
 module.exports = (function() {
   var ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A'];
   var suits = ["Spades", "Clubs", "Hearts", "Diamonds"];
   
   var War = function() {
-    this.deck = [];
+    this.deck = War.createNewDeck();
 
     this.player1 = {
-      deck: []
+      deck: War.createNewDeck()
     };
 
     this.player2 = {
-      deck: []
+      deck: War.createNewDeck()
     };
+  };
+
+  War.createNewDeck = function() {
+    return new LinkedList();
   };
 
   War.prototype.initializeDeck = function() {
