@@ -9,6 +9,9 @@
       name: botName,
       play: function (drawnCard, remainingDeckSize, moveType) {
         // moveType will be either 'normal', 'war', 'normal-gamble', or 'war-gamble'
+        //
+        // Return 'accept' to play the drawn card, or 'gamble' to draw a different card.
+        //
         return 'accept'
       },
       handleRoundResult: function (didIWin, loot) {
