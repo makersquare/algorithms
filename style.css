@@ -1,0 +1,35 @@
+h1, h2 { text-align: center; }
+.round {
+  overflow: auto;
+  width: 100%;
+}
+.round .move {
+  box-sizing: border-box;
+  float: left;
+  padding: 1em;
+  text-align: right;
+  width: 50%;
+}
+.round .move + .move { text-align: left; }
+
+.move.win > .card:last-child::after {
+  color: green;
+  content: " \2713";
+}
+.move.lose > .card:last-child::after {
+  color: red;
+  content: " \2717";
+}
+
+.card.gamble::after {
+  content: "[gamble]";
+  color: orange;
+}
+.card.conflict::after {
+  content: "[!]";
+  color: red;
+}
+.card.pot {
+  color: gray;
+  text-decoration: line-through;
+}
