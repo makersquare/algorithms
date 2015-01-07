@@ -1,6 +1,43 @@
 <html>
 <head>
   <title>Joust</title>
+  <style type="text/css">
+  h2 { text-align: center; }
+  .round {
+    overflow: auto;
+    width: 100%;
+  }
+  .round .move {
+    box-sizing: border-box;
+    float: left;
+    padding: 1em;
+    text-align: right;
+    width: 50%;
+  }
+  .round .move + .move { text-align: left; }
+
+  .move.win > .card:last-child::after {
+    color: green;
+    content: " \2713";
+  }
+  .move.lose > .card:last-child::after {
+    color: red;
+    content: " \2717";
+  }
+
+  .card.gamble::after {
+    content: "[gamble]";
+    color: orange;
+  }
+  .card.conflict::after {
+    content: "[!]";
+    color: red;
+  }
+  .card.pot {
+    color: gray;
+    text-decoration: line-through;
+  }
+  </style>
 </head>
 <body>
 
@@ -9,6 +46,7 @@
 <script type="text/javascript" src="vendor/mithril.js"></script>
 <script type="text/javascript" src="lib/bot-registry.js"></script>
 <script type="text/javascript" src="lib/game.js"></script>
+<script type="text/javascript" src="lib/game-history.js"></script>
 
 <!-- Include your and your opponents' bots here: -->
 <script type="text/javascript" src="sample-bot-1.js"></script>
@@ -21,7 +59,10 @@ var game = playGame(
   getRegisteredBot('dummy-bot'),
   getRegisteredBot('reckless-bot')
 )
-console.log("A WINNAR IS", game.winner)
+
+GameHistory.vm.game(game)
+
+m.module(document.getElementById('game'), GameHistory)
 </script>
 
 </body>
