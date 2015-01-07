@@ -1,0 +1,51 @@
+<html>
+<head>
+  <title>Bot Joust</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+<div id="game"></div>
+
+<script type="text/javascript" src="vendor/mithril.js"></script>
+<script type="text/javascript" src="lib/bot-registry.js"></script>
+<script type="text/javascript" src="lib/game.js"></script>
+<script type="text/javascript" src="lib/multi-game-stats-view.js"></script>
+
+<!-- Include your and your opponents' bots here: -->
+<script type="text/javascript" src="sample-bot-1.js"></script>
+<script type="text/javascript" src="sample-bot-2.js"></script>
+<!-- ^^^^^^^^^^^^^^^^^^ -->
+
+<script type="text/javascript">
+(function () {
+  // Here is where you decide who will battle
+  var gameCount = 100
+  var bot1 = getRegisteredBot('dummy-bot')
+  var bot2 = getRegisteredBot('reckless-bot')
+
+  // Play multiple games
+  var winCount = { p1: 0, p2: 0, tie: 0 }
+
+  for (var i=0; i < gameCount; i++) {
+    var game = playGame(bot1, bot2)
+    if (!game.winner) {
+      winCount.tie += 1
+    }
+    else {
+      console.log("Winner", game.winner)
+      winCount[game.winner.name] += 1
+    }
+  }
+
+  // Reference the last game just for
+  MultiGameStats.vm.bots.p1 = bot1
+  MultiGameStats.vm.bots.p2 = bot2
+  MultiGameStats.vm.winCounts(winCount)
+
+  m.module(document.getElementById('game'), MultiGameStats)
+})()
+</script>
+
+</body>
+</html>
