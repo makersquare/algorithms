@@ -21,14 +21,14 @@
 (function () {
   // Here is where you decide who will battle
   var gameCount = 100
-  var bot1 = getRegisteredBot('dummy-bot')
-  var bot2 = getRegisteredBot('reckless-bot')
+  var bot1 = BotRegistry.get('dummy-bot')
+  var bot2 = BotRegistry.get('reckless-bot')
 
   // Play multiple games
   var winCount = { p1: 0, p2: 0, tie: 0 }
 
   for (var i=0; i < gameCount; i++) {
-    var game = playGame(bot1, bot2)
+    var game = BotJoust.playGame(bot1, bot2)
     if (!game.winner) {
       winCount.tie += 1
     }

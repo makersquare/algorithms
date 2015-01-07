@@ -19,9 +19,9 @@
 
 <script type="text/javascript">
 // Here is where you decide who will battle
-var game = playGame(
-  getRegisteredBot('dummy-bot'),
-  getRegisteredBot('reckless-bot')
+var game = BotJoust.playGame(
+  BotRegistry.get('dummy-bot'),
+  BotRegistry.get('reckless-bot')
 )
 
 GameHistory.vm.game(game)
