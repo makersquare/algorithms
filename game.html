@@ -1,0 +1,28 @@
+<html>
+<head>
+  <title>Joust</title>
+</head>
+<body>
+
+<div id="game"></div>
+
+<script type="text/javascript" src="vendor/mithril.js"></script>
+<script type="text/javascript" src="lib/bot-registry.js"></script>
+<script type="text/javascript" src="lib/game.js"></script>
+
+<!-- Include your and your opponents' bots here: -->
+<script type="text/javascript" src="sample-bot-1.js"></script>
+<script type="text/javascript" src="sample-bot-2.js"></script>
+<!-- ^^^^^^^^^^^^^^^^^^ -->
+
+<script type="text/javascript">
+// Here is where you decide who will battle
+var game = playGame(
+  getRegisteredBot('dummy-bot'),
+  getRegisteredBot('reckless-bot')
+)
+console.log("A WINNAR IS", game.winner)
+</script>
+
+</body>
+</html>
