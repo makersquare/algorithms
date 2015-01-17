@@ -2,6 +2,15 @@
 <head>
   <title>Bot Joust</title>
   <link rel="stylesheet" type="text/css" href="style.css">
+  <style type="text/css">
+  .start { text-align: center; }
+  .start button { font-size: 2em; }
+  .win-count {
+    font-size: 5em;
+    font-family: Futura;
+  }
+  .win-count.winning { color: green; }
+  </style>
 </head>
 <body>
 
@@ -15,27 +24,50 @@
 <!-- Include your and your opponents' bots here: -->
 <script type="text/javascript" src="sample-bot-1.js"></script>
 <script type="text/javascript" src="sample-bot-2.js"></script>
+<script type="text/javascript" src="alex.js"></script>
+<script type="text/javascript" src="charles.js"></script>
+<script type="text/javascript" src="christina.js"></script>
+<script type="text/javascript" src="greg-m.js"></script>
+<script type="text/javascript" src="jason.js"></script>
+<script type="text/javascript" src="patrick.js"></script>
 <!-- ^^^^^^^^^^^^^^^^^^ -->
 
 <script type="text/javascript">
 (function () {
-  // Here is where you decide who will battle
-  var gameCount = 100
-  var bot1 = BotRegistry.get('dummy-bot')
-  var bot2 = BotRegistry.get('reckless-bot')
+  var gameCount = 0
+
+  // Include your and your opponent's bot names here.
+  // NOTE: Only the first two bot names in this array will joust.
+  var botNames = [
+    "dummy-bot",
+    "reckless-bot"
+  ]
+
+  var bot1 = BotRegistry.get(botNames[0])
+  var bot2 = BotRegistry.get(botNames[1])
 
   // Play multiple games
   var winCount = { p1: 0, p2: 0, tie: 0 }
 
-  for (var i=0; i < gameCount; i++) {
+
+  var timeStart = Date.now()
+
+  MultiGameStats.playMatch = function () {
     var game = BotJoust.playGame(bot1, bot2)
     if (!game.winner) {
       winCount.tie += 1
     }
     else {
-      console.log("Winner", game.winner)
       winCount[game.winner.name] += 1
     }
+    gameCount += 1
+    if (gameCount < 5000) {
+      timeout = setTimeout(MultiGameStats.playMatch, 0)
+    }
+    else {
+      MultiGameStats.vm.matchIsOver(true)
+    }
+    m.redraw()
   }
 
   // Reference the last game just for
